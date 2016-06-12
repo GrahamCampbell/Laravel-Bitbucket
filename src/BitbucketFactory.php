@@ -15,10 +15,8 @@ use Bitbucket\API\Api;
 use Bitbucket\API\Http\Client;
 use Bitbucket\API\Http\ClientInterface;
 use Bitbucket\API\Http\Listener\NormalizeArrayListener;
-use Buzz\Listener\LoggerListener;
 use GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory;
 use Psr\Log\LoggerInterface;
-use Psr\Log\LogLevel;
 
 /**
  * This is the bitbucket factory class.
@@ -87,9 +85,7 @@ class BitbucketFactory
         $client = new Client($options);
 
         if (array_get($config, 'logging')) {
-            $client->addListener(new LoggerListener(function ($message) {
-                $this->log->log(LogLevel::DEBUG, $message);
-            }));
+            $client->addListener(new LoggerListener($this->log));
         }
 
         $client->addListener(new NormalizeArrayListener());
