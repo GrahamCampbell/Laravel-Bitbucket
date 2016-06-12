@@ -42,8 +42,8 @@ class BitbucketManager extends AbstractManager
     /**
      * Create a new bitbucket manager instance.
      *
-     * @param \Illuminate\Contracts\Config\Repository $config
-     * @param \GrahamCampbell\Bitbucket\BitbucketFactory    $factory
+     * @param \Illuminate\Contracts\Config\Repository    $config
+     * @param \GrahamCampbell\Bitbucket\BitbucketFactory $factory
      *
      * @return void
      */

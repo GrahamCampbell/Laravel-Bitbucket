@@ -11,8 +11,8 @@
 
 namespace GrahamCampbell\Tests\Bitbucket\Facades;
 
-use GrahamCampbell\Bitbucket\Facades\Bitbucket;
 use GrahamCampbell\Bitbucket\BitbucketManager;
+use GrahamCampbell\Bitbucket\Facades\Bitbucket;
 use GrahamCampbell\TestBenchCore\FacadeTrait;
 use GrahamCampbell\Tests\Bitbucket\AbstractTestCase;
 
