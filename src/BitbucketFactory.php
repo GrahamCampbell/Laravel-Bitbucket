@@ -86,8 +86,8 @@ class BitbucketFactory
 
         $client = new Client($options);
 
-        if ($logging = array_get($config, 'logging')) {
-            $client->addSubscriber(new LoggerListener(function ($message) {
+        if (array_get($config, 'logging')) {
+            $client->addListener(new LoggerListener(function ($message) {
                 $this->log->log(LogLevel::DEBUG, $message);
             }));
         }
