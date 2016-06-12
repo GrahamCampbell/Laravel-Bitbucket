@@ -31,8 +31,8 @@ return [
     |
     | Here are each of the connections setup for your application. Example
     | configuration has been included, but you may add as many connections as
-    | you would like. Note that the 3 supported authentication methods are:
-    | "application", "password", and "token".
+    | you would like. Note that the two supported authentication methods are:
+    | "basic", and "token".
     |
     */
 
@@ -50,7 +50,7 @@ return [
         'alternative' => [
             'username' => 'your-username',
             'password' => 'your-password',
-            'method'   => 'password',
+            'method'   => 'basic',
             // 'logging'  => false,
             // 'baseUrl'  => 'https://api.bitbucket.org',
             // 'version'  => '1.0',
