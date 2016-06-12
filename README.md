@@ -3,7 +3,7 @@ Laravel Bitbucket
 
 Laravel Bitbucket was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a [PHP Bitbucket API](https://github.com/gentlero/bitbucket-api) bridge for [Laravel 5](http://laravel.com). It utilises my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-Bitbucket/releases), [license](LICENSE), and [contribution guidelines](CONTRIBUTING.md).
 
-![Laravel Bitbucket](https://cloud.githubusercontent.com/assets/2829600/4432305/c14a3934-468c-11e4-8371-684e72291139.PNG)
+![Laravel Bitbucket](https://cloud.githubusercontent.com/assets/2829600/15991648/9c381138-30b0-11e6-87e1-ad698c2dfe97.png)
 
 <p align="center">
 <a href="https://styleci.io/repos/60779513"><img src="https://styleci.io/repos/60779513/shield" alt="StyleCI Status"></img></a>
