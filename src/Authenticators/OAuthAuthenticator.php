@@ -41,8 +41,8 @@ class OAuthAuthenticator extends AbstractAuthenticator implements AuthenticatorI
         }
 
         $this->client->getClient()->addListener(new OAuthListener([
-            'oauth_consumer_key'    => $config['consumer_key'], 
-            'oauth_consumer_secret' => $config['consumer_secret']
+            'oauth_consumer_key'    => $config['consumer_key'],
+            'oauth_consumer_secret' => $config['consumer_secret'],
         ]));
 
         return $this->client;
