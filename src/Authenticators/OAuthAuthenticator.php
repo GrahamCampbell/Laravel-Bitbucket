@@ -35,13 +35,13 @@ class OAuthAuthenticator extends AbstractAuthenticator implements AuthenticatorI
         if (!$this->client) {
             throw new InvalidArgumentException('The client instance was not given to the OAuth authenticator.');
         }
-        
+
         if (!array_key_exists('consumer_key', $config) || !array_key_exists('consumer_secret', $config)) {
             throw new InvalidArgumentException('The OAuth authenticator requires a consumer key and secret.');
         }
-        
+
         $this->client->getClient()->addListener(new OAuthListener([
-            'oauth_consumer_key' => $config['consumer_key'], 
+            'oauth_consumer_key'    => $config['consumer_key'], 
             'oauth_consumer_secret' => $config['consumer_secret']
         ]));
 
