@@ -34,6 +34,8 @@ class AuthenticatorFactory
                 return new BasicAuthenticator();
             case 'token':
                 return new TokenAuthenticator();
+            case 'oauth':
+                return new OAuthAuthenticator();
         }
 
         throw new InvalidArgumentException("Unsupported authentication method [$method].");
