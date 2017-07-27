@@ -25,9 +25,11 @@ class AuthenticatorFactory
      *
      * @param string $method
      *
+     * @throws \InvalidArgumentException
+     *
      * @return \GrahamCampbell\Bitbucket\Authenticators\AuthenticatorInterface
      */
-    public function make($method)
+    public function make(string $method)
     {
         switch ($method) {
             case 'basic':

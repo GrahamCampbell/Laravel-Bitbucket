@@ -49,7 +49,7 @@ class BitbucketFactoryTest extends AbstractTestBenchTestCase
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Unsupported authentication method [].
+     * @expectedExceptionMessage The bitbucket factory requires an auth method.
      */
     public function testMakeEmpty()
     {

@@ -16,6 +16,7 @@ use Bitbucket\API\Http\Client;
 use Bitbucket\API\Http\ClientInterface;
 use Bitbucket\API\Http\Listener\NormalizeArrayListener;
 use GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory;
+use InvalidArgumentException;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -58,6 +59,8 @@ class BitbucketFactory
      *
      * @param string[] $config
      *
+     * @throws \InvalidArgumentException
+     *
      * @return \Bitbucket\API\Api
      */
     public function make(array $config)
@@ -99,6 +102,8 @@ class BitbucketFactory
      * @param \Bitbucket\API\Http\ClientInterface $http
      * @param string[]                            $config
      *
+     * @throws \InvalidArgumentException
+     *
      * @return \Bitbucket\API\Api
      */
     protected function getClient(ClientInterface $http, array $config)
@@ -106,6 +111,10 @@ class BitbucketFactory
         $client = new Api();
 
         $client->setClient($http);
+
+        if (!array_key_exists('method', $config)) {
+            throw new InvalidArgumentException('The bitbucket factory requires an auth method.');
+        }
 
         return $this->auth->make(array_get($config, 'method'))->with($client)->authenticate($config);
     }

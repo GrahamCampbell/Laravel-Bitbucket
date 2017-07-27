@@ -63,8 +63,7 @@ class AuthenticatorFactoryTest extends AbstractTestCase
     }
 
     /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Unsupported authentication method [].
+     * @expectedException TypeError
      */
     public function testMakeNoAuthenticator()
     {
