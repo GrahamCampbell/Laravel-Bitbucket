@@ -15,8 +15,8 @@ namespace GrahamCampbell\Tests\Bitbucket\Authenticators;
 
 use GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory;
 use GrahamCampbell\Bitbucket\Authenticators\BasicAuthenticator;
-use GrahamCampbell\Bitbucket\Authenticators\OAuthAuthenticator;
 use GrahamCampbell\Bitbucket\Authenticators\OAuth2Authenticator;
+use GrahamCampbell\Bitbucket\Authenticators\OAuthAuthenticator;
 use GrahamCampbell\Bitbucket\Authenticators\TokenAuthenticator;
 use GrahamCampbell\Tests\Bitbucket\AbstractTestCase;
 

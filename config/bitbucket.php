@@ -58,7 +58,7 @@ return [
             // 'version'  => '1.0',
             // 'verify'   => true,
         ],
-        
+
         'oauth2' => [
             'consumer_key'      => 'your-consumer-key',
             'consumer_secret'   => 'your-consumer-password',

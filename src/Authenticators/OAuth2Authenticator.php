@@ -43,7 +43,7 @@ class OAuth2Authenticator extends AbstractAuthenticator implements Authenticator
         }
 
         $this->client->getClient()->addListener(new OAuth2Listener([
-            'client_id'    => $config['consumer_key'],
+            'client_id'     => $config['consumer_key'],
             'client_secret' => $config['consumer_secret'],
         ]));
 
