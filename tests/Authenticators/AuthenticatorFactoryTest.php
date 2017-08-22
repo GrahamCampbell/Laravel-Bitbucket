@@ -16,6 +16,7 @@ namespace GrahamCampbell\Tests\Bitbucket\Authenticators;
 use GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory;
 use GrahamCampbell\Bitbucket\Authenticators\BasicAuthenticator;
 use GrahamCampbell\Bitbucket\Authenticators\OAuthAuthenticator;
+use GrahamCampbell\Bitbucket\Authenticators\OAuth2Authenticator;
 use GrahamCampbell\Bitbucket\Authenticators\TokenAuthenticator;
 use GrahamCampbell\Tests\Bitbucket\AbstractTestCase;
 
@@ -51,6 +52,15 @@ class AuthenticatorFactoryTest extends AbstractTestCase
         $return = $factory->make('oauth');
 
         $this->assertInstanceOf(OAuthAuthenticator::class, $return);
+    }
+
+    public function testMakeOAuth2Authenticator()
+    {
+        $factory = $this->getFactory();
+
+        $return = $factory->make('oauth2');
+
+        $this->assertInstanceOf(OAuth2Authenticator::class, $return);
     }
 
     /**
