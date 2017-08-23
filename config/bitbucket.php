@@ -34,7 +34,7 @@ return [
     | Here are each of the connections setup for your application. Example
     | configuration has been included, but you may add as many connections as
     | you would like. Note that the two supported authentication methods are:
-    | "basic", and "token".
+    | "basic", "token", "oath", and "oath2".
     |
     */
 
@@ -59,6 +59,11 @@ return [
             // 'verify'   => true,
         ],
 
+        'oauth2' => [
+            'consumer_key'    => 'your-consumer-key',
+            'consumer_secret' => 'your-consumer-password',
+            'method'          => 'oauth2',
+        ],
     ],
 
 ];

@@ -54,7 +54,7 @@ This option (`'default'`) is where you may specify which of the connections belo
 
 ##### Bitbucket Connections
 
-This option (`'connections'`) is where each of the connections are setup for your application. Example configuration has been included, but you may add as many connections as you would like. Note that the supported authentication methods are: `"basic"` and `"token"`, `"oauth"`.
+This option (`'connections'`) is where each of the connections are setup for your application. Example configuration has been included, but you may add as many connections as you would like. Note that the supported authentication methods are: `"basic"`, `"token"`, `"oauth"`, and `"oauth2"`.
 
 
 ## Usage
