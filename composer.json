@@ -14,7 +14,7 @@
         "illuminate/contracts": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*",
         "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*",
         "graham-campbell/manager": "^3.0",
-        "gentle/bitbucket-api": "^0.8",
+        "gentle/bitbucket-api": "^0.8|^1.0",
         "psr/log": "^1.0"
     },
     "require-dev": {
