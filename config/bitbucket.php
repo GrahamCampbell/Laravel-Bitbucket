@@ -34,7 +34,7 @@ return [
     | Here are each of the connections setup for your application. Example
     | configuration has been included, but you may add as many connections as
     | you would like. Note that the two supported authentication methods are:
-    | "basic", "token" and "oath2".
+    | "basic", "token", "oath", and "oath2".
     |
     */
 
