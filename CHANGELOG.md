@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V2.1.1 (02/01/2018)
+
+* Fixed config when inside phar
+
+
 ## V2.1 (15/10/2017)
 
 * Support oauth2
