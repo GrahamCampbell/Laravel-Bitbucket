@@ -67,7 +67,7 @@ class BitbucketFactory
      */
     public function make(array $config)
     {
-        $client = new Client($this->getBuilder($config), array_get($config, 'version'), array_get($config, 'enterprise'));
+        $client = new Client($this->getBuilder($config));
 
         if (!array_key_exists('method', $config)) {
             throw new InvalidArgumentException('The bitbucket factory requires an auth method.');
