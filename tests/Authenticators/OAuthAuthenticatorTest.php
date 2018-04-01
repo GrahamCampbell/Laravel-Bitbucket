@@ -23,7 +23,7 @@ use Mockery;
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
-class OauthAuthenticatorTest extends AbstractTestCase
+class OAuthAuthenticatorTest extends AbstractTestCase
 {
     public function testMakeWithMethod()
     {

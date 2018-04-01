@@ -46,7 +46,7 @@ class BitbucketFactory
      * Create a new bitbucket factory instance.
      *
      * @param \GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory $auth
-     * @param \Illuminate\Contracts\Cache\Factory|null                   $cache
+     * @param \Illuminate\Contracts\Cache\Factory|null                      $cache
      *
      * @return void
      */
