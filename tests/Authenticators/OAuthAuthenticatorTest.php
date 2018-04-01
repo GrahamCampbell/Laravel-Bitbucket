@@ -13,102 +13,80 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Tests\Bitbucket\Authenticators;
 
-use Bitbucket\API\Api;
-use Bitbucket\API\Http\ClientInterface;
-use GrahamCampbell\Bitbucket\Authenticators\OAuthAuthenticator;
+use Bitbucket\Client;
+use GrahamCampbell\Bitbucket\Authenticators\OauthAuthenticator;
 use GrahamCampbell\Tests\Bitbucket\AbstractTestCase;
 use Mockery;
 
 /**
- * This is the OAuth authenticator test class.
+ * This is the oauth authenticator test class.
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
-class OAuthAuthenticatorTest extends AbstractTestCase
+class OauthAuthenticatorTest extends AbstractTestCase
 {
     public function testMakeWithMethod()
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock(Api::class);
-        $client->shouldReceive('getClient')->once()->andReturn($http = Mockery::mock(ClientInterface::class));
-        $http->shouldReceive('addListener')->once();
+        $client = Mockery::mock(Client::class);
+        $client->shouldReceive('authenticate')->once()
+            ->with('oauth_token', 'your-token');
 
         $return = $authenticator->with($client)->authenticate([
-            'consumer_key'    => 'your-key',
-            'consumer_secret' => 'your-secret',
-            'method'          => 'oauth',
+            'token'  => 'your-token',
+            'method' => 'token',
         ]);
 
-        $this->assertInstanceOf(Api::class, $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     public function testMakeWithoutMethod()
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock(Api::class);
-        $client->shouldReceive('getClient')->once()->andReturn($http = Mockery::mock(ClientInterface::class));
-        $http->shouldReceive('addListener')->once();
+        $client = Mockery::mock(Client::class);
+        $client->shouldReceive('authenticate')->once()
+            ->with('oauth_token', 'your-token');
 
         $return = $authenticator->with($client)->authenticate([
-            'consumer_key'    => 'your-key',
-            'consumer_secret' => 'your-secret',
+            'token'  => 'your-token',
         ]);
 
-        $this->assertInstanceOf(Api::class, $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The OAuth authenticator requires a consumer key and secret.
+     * @expectedExceptionMessage The oauth authenticator requires a token.
      */
-    public function testMakeWithoutKey()
+    public function testMakeWithoutToken()
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock(Api::class);
+        $client = Mockery::mock(Client::class);
 
-        $return = $authenticator->with($client)->authenticate([
-            'consumer_secret' => 'your-secret',
-        ]);
+        $return = $authenticator->with($client)->authenticate([]);
 
-        $this->assertInstanceOf(Api::class, $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The OAuth authenticator requires a consumer key and secret.
-     */
-    public function testMakeWithoutSecret()
-    {
-        $authenticator = $this->getAuthenticator();
-
-        $client = Mockery::mock(Api::class);
-        $return = $authenticator->with($client)->authenticate([
-            'consumer_key' => 'your-key',
-        ]);
-
-        $this->assertInstanceOf(Api::class, $return);
-    }
-
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The client instance was not given to the OAuth authenticator.
+     * @expectedExceptionMessage The client instance was not given to the oauth authenticator.
      */
     public function testMakeWithoutSettingClient()
     {
         $authenticator = $this->getAuthenticator();
 
         $return = $authenticator->authenticate([
-            'consumer_key'    => 'your-key',
-            'consumer_secret' => 'your-secret',
-            'method'          => 'oauth',
+            'token'  => 'your-token',
+            'method' => 'token',
         ]);
     }
 
     protected function getAuthenticator()
     {
-        return new OAuthAuthenticator();
+        return new OauthAuthenticator();
     }
 }

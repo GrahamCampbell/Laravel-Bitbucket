@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Bitbucket\Authenticators;
 
-use Bitbucket\API\Api;
+use Bitbucket\Client;
 
 /**
  * This is the abstract authenticator class.
@@ -25,18 +25,18 @@ abstract class AbstractAuthenticator
     /**
      * The client to perform the authentication on.
      *
-     * @var \Bitbucket\API\Api|null
+     * @var \Bitbucket\Client|null
      */
     protected $client;
 
     /**
      * Set the client to perform the authentication on.
      *
-     * @param \Bitbucket\API\Api $client
+     * @param \Bitbucket\Client $client
      *
      * @return \GrahamCampbell\Bitbucket\Authenticators\AuthenticatorInterface
      */
-    public function with(Api $client)
+    public function with(Client $client)
     {
         $this->client = $client;
 

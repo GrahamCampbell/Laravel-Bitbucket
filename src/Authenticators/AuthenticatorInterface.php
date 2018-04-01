@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Bitbucket\Authenticators;
 
-use Bitbucket\API\Api;
+use Bitbucket\Client;
 
 /**
  * This is the authenticator interface.
@@ -25,11 +25,11 @@ interface AuthenticatorInterface
     /**
      * Set the client to perform the authentication on.
      *
-     * @param \Bitbucket\API\Api $client
+     * @param \Bitbucket\Client $client
      *
      * @return \GrahamCampbell\Bitbucket\Authenticators\AuthenticatorInterface
      */
-    public function with(Api $client);
+    public function with(Client $client);
 
     /**
      * Authenticate the client, and return it.
@@ -38,7 +38,7 @@ interface AuthenticatorInterface
      *
      * @throws \InvalidArgumentException
      *
-     * @return \Bitbucket\API\Api
+     * @return \Bitbucket\Client
      */
     public function authenticate(array $config);
 }

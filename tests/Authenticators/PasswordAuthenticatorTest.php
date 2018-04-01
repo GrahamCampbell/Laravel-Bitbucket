@@ -13,88 +13,87 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Tests\Bitbucket\Authenticators;
 
-use Bitbucket\API\Api;
-use Bitbucket\API\Http\ClientInterface;
-use GrahamCampbell\Bitbucket\Authenticators\BasicAuthenticator;
+use Bitbucket\Client;
+use GrahamCampbell\Bitbucket\Authenticators\PasswordAuthenticator;
 use GrahamCampbell\Tests\Bitbucket\AbstractTestCase;
 use Mockery;
 
 /**
- * This is the basic authenticator test class.
+ * This is the password authenticator test class.
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
-class BasicAuthenticatorTest extends AbstractTestCase
+class PasswordAuthenticatorTest extends AbstractTestCase
 {
     public function testMakeWithMethod()
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock(Api::class);
-        $client->shouldReceive('getClient')->once()->andReturn($http = Mockery::mock(ClientInterface::class));
-        $http->shouldReceive('addListener')->once();
+        $client = Mockery::mock(Client::class);
+        $client->shouldReceive('authenticate')->once()
+            ->with('http_password', 'your-username', 'your-password');
 
         $return = $authenticator->with($client)->authenticate([
             'username' => 'your-username',
             'password' => 'your-password',
-            'method'   => 'basic',
+            'method'   => 'password',
         ]);
 
-        $this->assertInstanceOf(Api::class, $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     public function testMakeWithoutMethod()
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock(Api::class);
-        $client->shouldReceive('getClient')->once()->andReturn($http = Mockery::mock(ClientInterface::class));
-        $http->shouldReceive('addListener')->once();
+        $client = Mockery::mock(Client::class);
+        $client->shouldReceive('authenticate')->once()
+            ->with('http_password', 'your-username', 'your-password');
 
         $return = $authenticator->with($client)->authenticate([
             'username' => 'your-username',
             'password' => 'your-password',
         ]);
 
-        $this->assertInstanceOf(Api::class, $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The basic authenticator requires a username and password.
+     * @expectedExceptionMessage The password authenticator requires a username and password.
      */
     public function testMakeWithoutUsername()
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock(Api::class);
+        $client = Mockery::mock(Client::class);
 
         $return = $authenticator->with($client)->authenticate([
             'password' => 'your-password',
         ]);
 
-        $this->assertInstanceOf(Api::class, $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The basic authenticator requires a username and password.
+     * @expectedExceptionMessage The password authenticator requires a username and password.
      */
-    public function testMakeWithoutBasic()
+    public function testMakeWithoutPassword()
     {
         $authenticator = $this->getAuthenticator();
 
-        $client = Mockery::mock(Api::class);
+        $client = Mockery::mock(Client::class);
         $return = $authenticator->with($client)->authenticate([
             'username' => 'your-username',
         ]);
 
-        $this->assertInstanceOf(Api::class, $return);
+        $this->assertInstanceOf(Client::class, $return);
     }
 
     /**
      * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The client instance was not given to the basic authenticator.
+     * @expectedExceptionMessage The client instance was not given to the password authenticator.
      */
     public function testMakeWithoutSettingClient()
     {
@@ -103,12 +102,12 @@ class BasicAuthenticatorTest extends AbstractTestCase
         $return = $authenticator->authenticate([
             'username' => 'your-username',
             'password' => 'your-password',
-            'method'   => 'basic',
+            'method'   => 'password',
         ]);
     }
 
     protected function getAuthenticator()
     {
-        return new BasicAuthenticator();
+        return new PasswordAuthenticator();
     }
 }

@@ -1,7 +1,7 @@
 Laravel Bitbucket
 =================
 
-Laravel Bitbucket was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a [PHP Bitbucket API](https://github.com/gentlero/bitbucket-api) bridge for [Laravel 5](http://laravel.com). It utilises my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-Bitbucket/releases), [license](LICENSE), and [contribution guidelines](CONTRIBUTING.md).
+Laravel Bitbucket was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a [Bitbucket API Client](https://github.com/BitbucketAPI/Client) bridge for [Laravel 5](http://laravel.com). It utilises my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-Bitbucket/releases), [license](LICENSE), and [contribution guidelines](CONTRIBUTING.md).
 
 ![Laravel Bitbucket](https://cloud.githubusercontent.com/assets/2829600/15991648/9c381138-30b0-11e6-87e1-ad698c2dfe97.png)
 
@@ -19,10 +19,10 @@ Laravel Bitbucket was created by, and is maintained by [Graham Campbell](https:/
 
 Laravel Bitbucket requires [PHP](https://php.net) 7.1 or 7.2. This particular version supports Laravel 5.5 or 5.6 only.
 
-To get the latest version, simply require the project using [Composer](https://getcomposer.org):
+To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any package that "provides" `php-http/client-implementation`. Most users will want:
 
 ```bash
-$ composer require graham-campbell/bitbucket
+$ composer require graham-campbell/bitbucket php-http/guzzle6-adapter
 ```
 
 Once installed, if you are not using automatic package discovery, then you need to register the `GrahamCampbell\Bitbucket\BitbucketServiceProvider` service provider in your `config/app.php`.
@@ -54,14 +54,14 @@ This option (`'default'`) is where you may specify which of the connections belo
 
 ##### Bitbucket Connections
 
-This option (`'connections'`) is where each of the connections are setup for your application. Example configuration has been included, but you may add as many connections as you would like. Note that the supported authentication methods are: `"basic"`, `"token"`, `"oauth"`, and `"oauth2"`.
+This option (`'connections'`) is where each of the connections are setup for your application. Example configuration has been included, but you may add as many connections as you would like. Note that the 2 supported authentication methods are: `"oauth"` and `"password"`.
 
 
 ## Usage
 
 ##### BitbucketManager
 
-This is the class of most interest. It is bound to the ioc container as `'bitbucket'` and can be accessed using the `Facades\Bitbucket` facade. This class implements the `ManagerInterface` by extending `AbstractManager`. The interface and abstract class are both part of my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package, so you may want to go and checkout the docs for how to use the manager class over at [that repo](https://github.com/GrahamCampbell/Laravel-Manager#usage). Note that the connection class returned will always be an instance of `\Bitbucket\API\Api`.
+This is the class of most interest. It is bound to the ioc container as `'bitbucket'` and can be accessed using the `Facades\Bitbucket` facade. This class implements the `ManagerInterface` by extending `AbstractManager`. The interface and abstract class are both part of my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package, so you may want to go and checkout the docs for how to use the manager class over at [that repo](https://github.com/GrahamCampbell/Laravel-Manager#usage). Note that the connection class returned will always be an instance of `\Bitbucket\Client`.
 
 ##### Facades\Bitbucket
 
@@ -79,35 +79,23 @@ Here you can see an example of just how simple this package is to use. Out of th
 use GrahamCampbell\Bitbucket\Facades\Bitbucket;
 // you can alias this in config/app.php if you like
 
-Bitbucket::api('Teams')->all();
+Bitbucket::currentUser()->show();
 // we're done here - how easy was that, it just works!
-
-Bitbucket::api('Repositories\Repository')->get('gentlero', 'bitbucket-api');
-// this example is simple, and there are far more methods available
 ```
 
-The bitbucket manager will behave like it is a `\Bitbucket\API\Api` class. If you want to call specific connections, you can do with the `connection` method:
-
-```php
-use GrahamCampbell\Bitbucket\Facades\Bitbucket;
-
-// the alternative connection is the other example provided in the default config
-Bitbucket::connection('alternative')->api('User')->emails();
-```
-
-With that in mind, note that:
+The bitbucket manager will behave like it is a `\Bitbucket\Client` class. If you want to call specific connections, you can do with the `connection` method:
 
 ```php
 use GrahamCampbell\Bitbucket\Facades\Bitbucket;
 
 // writing this:
-Bitbucket::connection('main')->api('Repositories\Issues\Comments')->all('gentlero', 'bitbucket-api', 2);
+Bitbucket::connection('main')->currentUser()->show();
 
 // is identical to writing this:
-Bitbucket::api('Repositories\Issues\Comments')->all('gentlero', 'bitbucket-api', 2);
+Bitbucket::currentUser()->show();
 
 // and is also identical to writing this:
-Bitbucket::connection()->api('Repositories\Issues\Comments')->all('gentlero', 'bitbucket-api', 2);
+Bitbucket::connection()->currentUser()->show();
 
 // this is because the main connection is configured to be the default
 Bitbucket::getDefaultConnection(); // this will return main
@@ -133,14 +121,14 @@ class Foo
 
     public function bar()
     {
-        $this->bitbucket->api('Repositories\Issues\Comments')->all('gentlero', 'bitbucket-api', 2);
+        $this->bitbucket->currentUser()->show();
     }
 }
 
 App::make('Foo')->bar();
 ```
 
-For more information on how to use the `\Bitbucket\API\Api` class we are calling behind the scenes here, check out the docs at http://gentlero.bitbucket.org/bitbucket-api/, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
+For more information on how to use the `\Bitbucket\Client` class we are calling behind the scenes here, check out the docs at https://github.com/BitbucketAPI/Client, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
 
 ##### Further Information
 

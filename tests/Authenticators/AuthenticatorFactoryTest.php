@@ -14,10 +14,8 @@ declare(strict_types=1);
 namespace GrahamCampbell\Tests\Bitbucket\Authenticators;
 
 use GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory;
-use GrahamCampbell\Bitbucket\Authenticators\BasicAuthenticator;
-use GrahamCampbell\Bitbucket\Authenticators\OAuth2Authenticator;
-use GrahamCampbell\Bitbucket\Authenticators\OAuthAuthenticator;
-use GrahamCampbell\Bitbucket\Authenticators\TokenAuthenticator;
+use GrahamCampbell\Bitbucket\Authenticators\OauthAuthenticator;
+use GrahamCampbell\Bitbucket\Authenticators\PasswordAuthenticator;
 use GrahamCampbell\Tests\Bitbucket\AbstractTestCase;
 
 /**
@@ -27,44 +25,26 @@ use GrahamCampbell\Tests\Bitbucket\AbstractTestCase;
  */
 class AuthenticatorFactoryTest extends AbstractTestCase
 {
-    public function testMakeBasicAuthenticator()
-    {
-        $factory = $this->getFactory();
-
-        $return = $factory->make('basic');
-
-        $this->assertInstanceOf(BasicAuthenticator::class, $return);
-    }
-
-    public function testMakeTokenAuthenticator()
-    {
-        $factory = $this->getFactory();
-
-        $return = $factory->make('token');
-
-        $this->assertInstanceOf(TokenAuthenticator::class, $return);
-    }
-
-    public function testMakeOAuthAuthenticator()
+    public function testMakeOauthAuthenticator()
     {
         $factory = $this->getFactory();
 
         $return = $factory->make('oauth');
 
-        $this->assertInstanceOf(OAuthAuthenticator::class, $return);
+        $this->assertInstanceOf(OauthAuthenticator::class, $return);
     }
 
-    public function testMakeOAuth2Authenticator()
+    public function testMakePasswordAuthenticator()
     {
         $factory = $this->getFactory();
 
-        $return = $factory->make('oauth2');
+        $return = $factory->make('password');
 
-        $this->assertInstanceOf(OAuth2Authenticator::class, $return);
+        $this->assertInstanceOf(PasswordAuthenticator::class, $return);
     }
 
     /**
-     * @expectedException \InvalidArgumentException
+     * @expectedException InvalidArgumentException
      * @expectedExceptionMessage Unsupported authentication method [foo].
      */
     public function testMakeInvalidAuthenticator()

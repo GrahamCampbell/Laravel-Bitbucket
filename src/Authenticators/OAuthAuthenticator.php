@@ -13,15 +13,15 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Bitbucket\Authenticators;
 
-use Bitbucket\API\Http\Listener\OAuthListener;
+use Bitbucket\Client;
 use InvalidArgumentException;
 
 /**
- * This is the basic authenticator class.
+ * This is the oauth authenticator class.
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
-class OAuthAuthenticator extends AbstractAuthenticator implements AuthenticatorInterface
+class OauthAuthenticator extends AbstractAuthenticator implements AuthenticatorInterface
 {
     /**
      * Authenticate the client, and return it.
@@ -30,22 +30,19 @@ class OAuthAuthenticator extends AbstractAuthenticator implements AuthenticatorI
      *
      * @throws \InvalidArgumentException
      *
-     * @return \Bitbucket\API\Api
+     * @return \Bitbucket\Client
      */
     public function authenticate(array $config)
     {
         if (!$this->client) {
-            throw new InvalidArgumentException('The client instance was not given to the OAuth authenticator.');
+            throw new InvalidArgumentException('The client instance was not given to the oauth authenticator.');
         }
 
-        if (!array_key_exists('consumer_key', $config) || !array_key_exists('consumer_secret', $config)) {
-            throw new InvalidArgumentException('The OAuth authenticator requires a consumer key and secret.');
+        if (!array_key_exists('token', $config)) {
+            throw new InvalidArgumentException('The oauth authenticator requires a token.');
         }
 
-        $this->client->getClient()->addListener(new OAuthListener([
-            'oauth_consumer_key'    => $config['consumer_key'],
-            'oauth_consumer_secret' => $config['consumer_secret'],
-        ]));
+        $this->client->authenticate(Client::AUTH_OAUTH_TOKEN, $config['token']);
 
         return $this->client;
     }

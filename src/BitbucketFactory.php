@@ -13,13 +13,13 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Bitbucket;
 
-use Bitbucket\API\Api;
-use Bitbucket\API\Http\Client;
-use Bitbucket\API\Http\ClientInterface;
-use Bitbucket\API\Http\Listener\NormalizeArrayListener;
+use Bitbucket\Client;
+use Bitbucket\HttpClient\Builder;
 use GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory;
+use Http\Client\Common\Plugin\RetryPlugin;
+use Illuminate\Contracts\Cache\Factory;
 use InvalidArgumentException;
-use Psr\Log\LoggerInterface;
+use Madewithlove\IlluminatePsrCacheBridge\Laravel\CacheItemPool;
 
 /**
  * This is the bitbucket factory class.
@@ -29,13 +29,6 @@ use Psr\Log\LoggerInterface;
 class BitbucketFactory
 {
     /**
-     * The psr logger instance.
-     *
-     * @var \Psr\Log\LoggerInterface
-     */
-    protected $log;
-
-    /**
      * The authenticator factory instance.
      *
      * @var \GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory
@@ -43,17 +36,24 @@ class BitbucketFactory
     protected $auth;
 
     /**
+     * The illuminate cache instance.
+     *
+     * @var \Illuminate\Contracts\Cache\Factory|null
+     */
+    protected $cache;
+
+    /**
      * Create a new bitbucket factory instance.
      *
-     * @param \Psr\Log\LoggerInterface                                      $log
      * @param \GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory $auth
+     * @param \Illuminate\Contracts\Cache\Factory|null                   $cache
      *
      * @return void
      */
-    public function __construct(LoggerInterface $log, AuthenticatorFactory $auth)
+    public function __construct(AuthenticatorFactory $auth, Factory $cache = null)
     {
-        $this->log = $log;
         $this->auth = $auth;
+        $this->cache = $cache;
     }
 
     /**
@@ -63,61 +63,38 @@ class BitbucketFactory
      *
      * @throws \InvalidArgumentException
      *
-     * @return \Bitbucket\API\Api
+     * @return \Bitbucket\Client
      */
     public function make(array $config)
     {
-        $http = $this->getHttpClient($config);
-
-        return $this->getClient($http, $config);
-    }
-
-    /**
-     * Get the http client.
-     *
-     * @param string[] $config
-     *
-     * @return \Bitbucket\API\Http\ClientInterface
-     */
-    protected function getHttpClient(array $config)
-    {
-        $options = [
-            'base_url'    => array_get($config, 'baseUrl', 'https://api.bitbucket.org'),
-            'api_version' => array_get($config, 'version', '1.0'),
-            'verify_peer' => array_get($config, 'verify', true),
-        ];
-
-        $client = new Client($options);
-
-        if (array_get($config, 'logging')) {
-            $client->addListener(new LoggerListener($this->log));
-        }
-
-        $client->addListener(new NormalizeArrayListener());
-
-        return $client;
-    }
-
-    /**
-     * Get the main client.
-     *
-     * @param \Bitbucket\API\Http\ClientInterface $http
-     * @param string[]                            $config
-     *
-     * @throws \InvalidArgumentException
-     *
-     * @return \Bitbucket\API\Api
-     */
-    protected function getClient(ClientInterface $http, array $config)
-    {
-        $client = new Api();
-
-        $client->setClient($http);
+        $client = new Client($this->getBuilder($config), array_get($config, 'version'), array_get($config, 'enterprise'));
 
         if (!array_key_exists('method', $config)) {
             throw new InvalidArgumentException('The bitbucket factory requires an auth method.');
         }
 
         return $this->auth->make(array_get($config, 'method'))->with($client)->authenticate($config);
+    }
+
+    /**
+     * Get the http client builder.
+     *
+     * @param string[] $config
+     *
+     * @return \Bitbucket\HttpClient\Builder
+     */
+    protected function getBuilder(array $config)
+    {
+        $builder = new Builder();
+
+        if ($backoff = array_get($config, 'backoff')) {
+            $builder->addPlugin(new RetryPlugin(['retries' => $backoff === true ? 2 : $backoff]));
+        }
+
+        if ($this->cache && class_exists(CacheItemPool::class) && $cache = array_get($config, 'cache')) {
+            $builder->addCache(new CacheItemPool($this->cache->store($cache === true ? null : $cache)));
+        }
+
+        return $builder;
     }
 }

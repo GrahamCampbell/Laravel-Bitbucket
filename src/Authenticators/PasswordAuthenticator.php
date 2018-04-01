@@ -13,15 +13,15 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Bitbucket\Authenticators;
 
-use Bitbucket\API\Http\Listener\BasicAuthListener;
+use Bitbucket\Client;
 use InvalidArgumentException;
 
 /**
- * This is the basic authenticator class.
+ * This is the password authenticator class.
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
-class BasicAuthenticator extends AbstractAuthenticator implements AuthenticatorInterface
+class PasswordAuthenticator extends AbstractAuthenticator implements AuthenticatorInterface
 {
     /**
      * Authenticate the client, and return it.
@@ -30,19 +30,19 @@ class BasicAuthenticator extends AbstractAuthenticator implements AuthenticatorI
      *
      * @throws \InvalidArgumentException
      *
-     * @return \Bitbucket\API\Api
+     * @return \Bitbucket\Client
      */
     public function authenticate(array $config)
     {
         if (!$this->client) {
-            throw new InvalidArgumentException('The client instance was not given to the basic authenticator.');
+            throw new InvalidArgumentException('The client instance was not given to the password authenticator.');
         }
 
         if (!array_key_exists('username', $config) || !array_key_exists('password', $config)) {
-            throw new InvalidArgumentException('The basic authenticator requires a username and password.');
+            throw new InvalidArgumentException('The password authenticator requires a username and password.');
         }
 
-        $this->client->getClient()->addListener(new BasicAuthListener($config['username'], $config['password']));
+        $this->client->authenticate(Client::AUTH_HTTP_PASSWORD, $config['username'], $config['password']);
 
         return $this->client;
     }

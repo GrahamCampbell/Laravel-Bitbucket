@@ -33,8 +33,8 @@ return [
     |
     | Here are each of the connections setup for your application. Example
     | configuration has been included, but you may add as many connections as
-    | you would like. Note that the two supported authentication methods are:
-    | "basic", "token", "oath", and "oath2".
+    | you would like. Note that the 2 supported authentication methods are:
+    | "oauth" and "password" and "token".
     |
     */
 
@@ -42,28 +42,21 @@ return [
 
         'main' => [
             'token'   => 'your-token',
-            'method'  => 'token',
-            // 'logging' => false,
-            // 'baseUrl' => 'https://api.bitbucket.org',
-            // 'version' => '1.0',
-            // 'verify'  => true,
+            'method'  => 'oauth',
+            // 'backoff' => false,
+            // 'cache'   => false,
+            // 'sudo'    => null,
         ],
 
         'alternative' => [
-            'username' => 'your-username',
-            'password' => 'your-password',
-            'method'   => 'basic',
-            // 'logging'  => false,
-            // 'baseUrl'  => 'https://api.bitbucket.org',
-            // 'version'  => '1.0',
-            // 'verify'   => true,
+            'username' => 'foo',
+            'password' => 'bar',
+            'method'   => 'password',
+            // 'backoff'  => false,
+            // 'cache'    => false,
+            // 'sudo'     => null,
         ],
 
-        'oauth2' => [
-            'consumer_key'    => 'your-consumer-key',
-            'consumer_secret' => 'your-consumer-password',
-            'method'          => 'oauth2',
-        ],
     ],
 
 ];

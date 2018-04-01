@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V4.0 (Upcoming)
+
+* Switched to bitbucket/client 1.0
+
+
 ## V3.0 (01/03/2018)
 
 * Support PHP 7.1 or 7.2

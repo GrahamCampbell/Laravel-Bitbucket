@@ -13,13 +13,12 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Bitbucket;
 
-use Bitbucket\API\Api;
+use Bitbucket\Client;
 use GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;
-use Psr\Log\LoggerInterface;
 
 /**
  * This is the bitbucket service provider class.
@@ -91,10 +90,10 @@ class BitbucketServiceProvider extends ServiceProvider
     protected function registerBitbucketFactory()
     {
         $this->app->singleton('bitbucket.factory', function (Container $app) {
-            $log = $app->make(LoggerInterface::class);
             $auth = $app['bitbucket.authfactory'];
+            $cache = $app['cache'];
 
-            return new BitbucketFactory($log, $auth);
+            return new BitbucketFactory($auth, $cache);
         });
 
         $this->app->alias('bitbucket.factory', BitbucketFactory::class);
@@ -130,7 +129,7 @@ class BitbucketServiceProvider extends ServiceProvider
             return $manager->connection();
         });
 
-        $this->app->alias('bitbucket.connection', Api::class);
+        $this->app->alias('bitbucket.connection', Client::class);
     }
 
     /**

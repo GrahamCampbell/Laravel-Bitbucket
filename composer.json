@@ -14,14 +14,15 @@
         "illuminate/contracts": "5.5.*|5.6.*",
         "illuminate/support": "5.5.*|5.6.*",
         "graham-campbell/manager": "^4.0",
-        "gentle/bitbucket-api": "^1.1",
-        "psr/log": "^1.0"
+        "bitbucket/client": "1.0.*"
     },
     "require-dev": {
         "graham-campbell/analyzer": "^2.0",
         "graham-campbell/testbench": "^5.0",
+        "madewithlove/illuminate-psr-cache-bridge": "^1.0",
         "mockery/mockery": "^1.0",
-        "phpunit/phpunit": "^6.5|^7.0"
+        "phpunit/phpunit": "^6.5|^7.0",
+        "php-http/guzzle6-adapter": "^1.0"
     },
     "autoload": {
         "psr-4": {
@@ -38,7 +39,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "3.0-dev"
+            "dev-master": "4.0-dev"
         },
         "laravel": {
             "providers": [

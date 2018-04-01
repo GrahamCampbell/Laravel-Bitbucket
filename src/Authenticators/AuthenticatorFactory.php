@@ -34,14 +34,10 @@ class AuthenticatorFactory
     public function make(string $method)
     {
         switch ($method) {
-            case 'basic':
-                return new BasicAuthenticator();
-            case 'token':
-                return new TokenAuthenticator();
             case 'oauth':
-                return new OAuthAuthenticator();
-            case 'oauth2':
-                return new OAuth2Authenticator();
+                return new OauthAuthenticator(); // AUTH_OAUTH_TOKEN
+            case 'password':
+                return new PasswordAuthenticator(); // AUTH_HTTP_PASSWORD
         }
 
         throw new InvalidArgumentException("Unsupported authentication method [$method].");

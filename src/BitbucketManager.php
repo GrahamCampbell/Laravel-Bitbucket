@@ -19,16 +19,16 @@ use Illuminate\Contracts\Config\Repository;
 /**
  * This is the bitbucket manager class.
  *
- * @method \Bitbucket\API\Http\ClientInterface getClient()
- * @method \Bitbucket\API\Api setClient(\Bitbucket\API\Http\ClientInterface $client)
- * @method void setCredentials(\Bitbucket\API\Authentication\AuthenticationInterface $auth)
- * @method \Buzz\Message\MessageInterface requestGet(string $endpoint, array|string $params = [], array $headers = [])
- * @method \Buzz\Message\MessageInterface requestPost(string $endpoint, array|string $params = [], array $headers = [])
- * @method \Buzz\Message\MessageInterface requestPut(string $endpoint, array|string $params = [], array $headers = [])
- * @method \Buzz\Message\MessageInterface requestDelete(string $endpoint, array|string $params = [], array $headers = [])
- * @method \Bitbucket\API\Api setFormat(string $name)
- * @method string getFormat()
- * @method \Bitbucket\API\Api api(string $name)
+ * @method \Bitbucket\Api\Addon addon()
+ * @method \Bitbucket\Api\CurrentUser currentUser()
+ * @method \Bitbucket\Api\HookEvents hookEvents()
+ * @method \Bitbucket\Api\Repositories repositories()
+ * @method \Bitbucket\Api\Snippets snippets()
+ * @method \Bitbucket\Api\Teams teams(string $username)
+ * @method \Bitbucket\Api\Users users(string $username)
+ * @method void authenticate(string $method, string $token, string|null $password)
+ * @method \Psr\Http\Message\ResponseInterface|null getLastResponse()
+ * @method \Http\Client\Common\HttpMethodsClient getHttpClient()
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
@@ -60,7 +60,7 @@ class BitbucketManager extends AbstractManager
      *
      * @param array $config
      *
-     * @return \Bitbucket\API\Api
+     * @return \Bitbucket\Client
      */
     protected function createConnection(array $config)
     {

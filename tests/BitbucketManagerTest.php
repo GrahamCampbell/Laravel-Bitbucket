@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Tests\Bitbucket;
 
-use Bitbucket\API\Api;
+use Bitbucket\Client;
 use GrahamCampbell\Bitbucket\BitbucketFactory;
 use GrahamCampbell\Bitbucket\BitbucketManager;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
@@ -40,7 +40,7 @@ class BitbucketManagerTest extends AbstractTestBenchTestCase
 
         $return = $manager->connection();
 
-        $this->assertInstanceOf(Api::class, $return);
+        $this->assertInstanceOf(Client::class, $return);
 
         $this->assertArrayHasKey('main', $manager->getConnections());
     }
@@ -58,7 +58,7 @@ class BitbucketManagerTest extends AbstractTestBenchTestCase
         $config['name'] = 'main';
 
         $manager->getFactory()->shouldReceive('make')->once()
-            ->with($config)->andReturn(Mockery::mock(Api::class));
+            ->with($config)->andReturn(Mockery::mock(Client::class));
 
         return $manager;
     }

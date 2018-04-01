@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Tests\Bitbucket;
 
-use Bitbucket\API\Api;
+use Bitbucket\Client;
 use GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory;
 use GrahamCampbell\Bitbucket\BitbucketFactory;
 use GrahamCampbell\Bitbucket\BitbucketManager;
@@ -45,7 +45,7 @@ class ServiceProviderTest extends AbstractTestCase
 
     public function testBindings()
     {
-        $this->assertIsInjectable(Api::class);
+        $this->assertIsInjectable(Client::class);
 
         $original = $this->app['bitbucket.connection'];
         $this->app['bitbucket']->reconnect();

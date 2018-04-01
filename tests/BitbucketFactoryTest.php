@@ -13,13 +13,13 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Tests\Bitbucket;
 
-use Bitbucket\API\Api;
-use Bitbucket\API\Http\ClientInterface;
+use Bitbucket\Client;
 use GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory;
 use GrahamCampbell\Bitbucket\BitbucketFactory;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
+use Illuminate\Contracts\Cache\Factory;
+use Illuminate\Contracts\Cache\Repository;
 use Mockery;
-use Psr\Log\LoggerInterface;
 
 /**
  * This is the bitbucket factory test class.
@@ -32,10 +32,49 @@ class BitbucketFactoryTest extends AbstractTestBenchTestCase
     {
         $factory = $this->getFactory();
 
-        $client = $factory->make(['token' => 'your-token', 'method' => 'token']);
+        $client = $factory[0]->make(['token' => 'your-token', 'method' => 'oauth']);
 
-        $this->assertInstanceOf(Api::class, $client);
-        $this->assertInstanceOf(ClientInterface::class, $client->getClient());
+        $this->assertInstanceOf(Client::class, $client);
+    }
+
+    public function testMakeStandardExplicitCache()
+    {
+        $factory = $this->getFactory();
+
+        $factory[1]->shouldReceive('store')->once()->with(null)->andReturn(Mockery::mock(Repository::class));
+
+        $client = $factory[0]->make(['token' => 'your-token', 'method' => 'oauth', 'cache' => true]);
+
+        $this->assertInstanceOf(Client::class, $client);
+    }
+
+    public function testMakeStandardNamedCache()
+    {
+        $factory = $this->getFactory();
+
+        $factory[1]->shouldReceive('store')->once()->with('foo')->andReturn(Mockery::mock(Repository::class));
+
+        $client = $factory[0]->make(['token' => 'your-token', 'method' => 'oauth', 'cache' => 'foo']);
+
+        $this->assertInstanceOf(Client::class, $client);
+    }
+
+    public function testMakeStandardNoCacheOrBackoff()
+    {
+        $factory = $this->getFactory();
+
+        $client = $factory[0]->make(['token' => 'your-token', 'method' => 'oauth', 'cache' => false, 'backoff' => false]);
+
+        $this->assertInstanceOf(Client::class, $client);
+    }
+
+    public function testMakeStandardExplicitBackoff()
+    {
+        $factory = $this->getFactory();
+
+        $client = $factory[0]->make(['token' => 'your-token', 'method' => 'oauth', 'backoff' => true]);
+
+        $this->assertInstanceOf(Client::class, $client);
     }
 
     /**
@@ -46,7 +85,7 @@ class BitbucketFactoryTest extends AbstractTestBenchTestCase
     {
         $factory = $this->getFactory();
 
-        $factory->make(['method' => 'bar']);
+        $factory[0]->make(['method' => 'bar']);
     }
 
     /**
@@ -57,11 +96,13 @@ class BitbucketFactoryTest extends AbstractTestBenchTestCase
     {
         $factory = $this->getFactory();
 
-        $factory->make([]);
+        $factory[0]->make([]);
     }
 
     protected function getFactory()
     {
-        return new BitbucketFactory(Mockery::mock(LoggerInterface::class), new AuthenticatorFactory(), __DIR__);
+        $cache = Mockery::mock(Factory::class);
+
+        return [new BitbucketFactory(new AuthenticatorFactory(), $cache), $cache];
     }
 }
