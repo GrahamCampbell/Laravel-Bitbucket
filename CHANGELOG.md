@@ -5,6 +5,7 @@ CHANGE LOG
 ## V4.0 (Upcoming)
 
 * Switched to bitbucket/client 1.0
+* Support no authentication
 
 
 ## V3.0 (01/03/2018)
