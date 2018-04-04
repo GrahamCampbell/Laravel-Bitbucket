@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V4.1 (Upcoming)
+
+* Upgraded to bitbucket/client 1.1
+* Support customizing the base URL
+
+
 ## V4.0 (02/04/2018)
 
 * Switched to bitbucket/client 1.0
