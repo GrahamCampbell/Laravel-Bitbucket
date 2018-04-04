@@ -14,7 +14,7 @@
         "illuminate/contracts": "5.5.*|5.6.*",
         "illuminate/support": "5.5.*|5.6.*",
         "graham-campbell/manager": "^4.0",
-        "bitbucket/client": "1.0.*"
+        "bitbucket/client": "1.1.*"
     },
     "require-dev": {
         "graham-campbell/analyzer": "^2.0",
