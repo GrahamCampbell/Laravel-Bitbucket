@@ -45,7 +45,7 @@ return [
             'method'  => 'oauth',
             // 'backoff' => false,
             // 'cache'   => false,
-            // 'sudo'    => null,
+            // 'url'     => null,
         ],
 
         'alternative' => [
@@ -54,7 +54,7 @@ return [
             'method'   => 'password',
             // 'backoff'  => false,
             // 'cache'    => false,
-            // 'sudo'     => null,
+            // 'url'      => null,
         ],
 
     ],

@@ -73,6 +73,10 @@ class BitbucketFactory
             throw new InvalidArgumentException('The bitbucket factory requires an auth method.');
         }
 
+        if ($url = array_get($config, 'url')) {
+            $client->setUrl($url);
+        }
+
         if ($config['method'] === 'none') {
             return $client;
         }
