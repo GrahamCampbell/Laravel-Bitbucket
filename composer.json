@@ -17,7 +17,7 @@
         "bitbucket/client": "1.1.*"
     },
     "require-dev": {
-        "graham-campbell/analyzer": "^2.0",
+        "graham-campbell/analyzer": "^2.1",
         "graham-campbell/testbench": "^5.0",
         "madewithlove/illuminate-psr-cache-bridge": "^1.0",
         "mockery/mockery": "^1.0",
@@ -39,7 +39,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4.1-dev"
+            "dev-master": "4.2-dev"
         },
         "laravel": {
             "providers": [
