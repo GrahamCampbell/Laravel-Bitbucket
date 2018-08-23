@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V4.2 (23/08/2018)
+
+* Added Laravel 5.7 support
+
+
 ## V4.1 (05/04/2018)
 
 * Upgraded to bitbucket/client 1.1
