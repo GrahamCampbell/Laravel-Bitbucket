@@ -17,6 +17,8 @@ use GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory;
 use GrahamCampbell\Bitbucket\Authenticators\OauthAuthenticator;
 use GrahamCampbell\Bitbucket\Authenticators\PasswordAuthenticator;
 use GrahamCampbell\Tests\Bitbucket\AbstractTestCase;
+use InvalidArgumentException;
+use TypeError;
 
 /**
  * This is the authenticator factory test class.
@@ -43,25 +45,23 @@ class AuthenticatorFactoryTest extends AbstractTestCase
         $this->assertInstanceOf(PasswordAuthenticator::class, $return);
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     * @expectedExceptionMessage Unsupported authentication method [foo].
-     */
     public function testMakeInvalidAuthenticator()
     {
         $factory = $this->getFactory();
 
-        $return = $factory->make('foo');
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Unsupported authentication method [foo].');
+
+        $factory->make('foo');
     }
 
-    /**
-     * @expectedException TypeError
-     */
     public function testMakeNoAuthenticator()
     {
         $factory = $this->getFactory();
 
-        $return = $factory->make(null);
+        $this->expectException(TypeError::class);
+
+        $factory->make(null);
     }
 
     protected function getFactory()

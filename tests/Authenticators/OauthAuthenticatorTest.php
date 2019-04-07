@@ -16,6 +16,7 @@ namespace GrahamCampbell\Tests\Bitbucket\Authenticators;
 use Bitbucket\Client;
 use GrahamCampbell\Bitbucket\Authenticators\OauthAuthenticator;
 use GrahamCampbell\Tests\Bitbucket\AbstractTestCase;
+use InvalidArgumentException;
 use Mockery;
 
 /**
@@ -56,30 +57,26 @@ class OauthAuthenticatorTest extends AbstractTestCase
         $this->assertInstanceOf(Client::class, $return);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The oauth authenticator requires a token.
-     */
     public function testMakeWithoutToken()
     {
         $authenticator = $this->getAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
-        $return = $authenticator->with($client)->authenticate([]);
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('The oauth authenticator requires a token.');
 
-        $this->assertInstanceOf(Client::class, $return);
+        $authenticator->with($client)->authenticate([]);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage The client instance was not given to the oauth authenticator.
-     */
     public function testMakeWithoutSettingClient()
     {
         $authenticator = $this->getAuthenticator();
 
-        $return = $authenticator->authenticate([
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('The client instance was not given to the oauth authenticator.');
+
+        $authenticator->authenticate([
             'token'  => 'your-token',
             'method' => 'token',
         ]);
