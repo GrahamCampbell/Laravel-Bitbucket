@@ -1,11 +1,9 @@
 CONTRIBUTING
 ============
 
-
 Contributions are **welcome** and will be fully **credited**.
 
 We accept contributions via pull requests on Github. Please review these guidelines before continuing.
-
 
 ## Guidelines
 
@@ -15,7 +13,6 @@ We accept contributions via pull requests on Github. Please review these guideli
 * You may need to [rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) to avoid merge conflicts.
 * If you are changing or adding to the behaviour or public api, you may need to update the docs.
 * Please remember that we follow [SemVer](https://semver.org/).
-
 
 ## Running Tests
 
