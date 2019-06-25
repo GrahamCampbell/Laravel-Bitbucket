@@ -1,7 +1,7 @@
 Laravel Bitbucket
 =================
 
-Laravel Bitbucket was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a [Bitbucket API Client](https://github.com/BitbucketAPI/Client) bridge for [Laravel 5](http://laravel.com). It utilises my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-Bitbucket/releases), [license](LICENSE), and [contribution guidelines](CONTRIBUTING.md).
+Laravel Bitbucket was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a [Bitbucket API Client](https://github.com/BitbucketAPI/Client) bridge for [Laravel 5](http://laravel.com). It utilises my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-Bitbucket/releases), [license](LICENSE), [security policy](.github/SECURITY.md), [code of conduct](.github/CODE_OF_CONDUCT.md), and [contribution guidelines](.github/CONTRIBUTING.md).
 
 ![Laravel Bitbucket](https://cloud.githubusercontent.com/assets/2829600/15991648/9c381138-30b0-11e6-87e1-ad698c2dfe97.png)
 
@@ -137,7 +137,7 @@ There are other classes in this package that are not documented here. This is be
 
 ## Security
 
-If you discover a security vulnerability within this package, please send an e-mail to Graham Campbell at graham@alt-three.com. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within this package, please send an email to Graham Campbell at graham@alt-three.com. All security vulnerabilities will be promptly addressed. You may view our full policy [here](.github/SECURITY.md).
 
 
 ## License
