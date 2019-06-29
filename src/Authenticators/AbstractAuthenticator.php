@@ -20,7 +20,7 @@ use Bitbucket\Client;
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
-abstract class AbstractAuthenticator
+abstract class AbstractAuthenticator implements AuthenticatorInterface
 {
     /**
      * The client to perform the authentication on.

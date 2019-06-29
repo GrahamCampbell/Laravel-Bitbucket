@@ -21,7 +21,7 @@ use InvalidArgumentException;
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
-class OauthAuthenticator extends AbstractAuthenticator implements AuthenticatorInterface
+class OauthAuthenticator extends AbstractAuthenticator
 {
     /**
      * Authenticate the client, and return it.
