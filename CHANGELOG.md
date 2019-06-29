@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V5.0 (Upcoming)
+## V5.0 (29/06/2019)
 
 * Upgraded to bitbucket/client 2.0
 * Reworked caching
