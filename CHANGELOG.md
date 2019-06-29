@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V5.0 (Upcoming)
+
+* Upgraded to bitbucket/client 2.0
+* Reworked caching
+
+
 ## V4.3 (07/04/2019)
 
 * Added Laravel 5.8 support
