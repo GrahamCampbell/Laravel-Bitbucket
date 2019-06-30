@@ -6,6 +6,7 @@ CHANGE LOG
 
 * Upgraded to bitbucket/client 2.0
 * Reworked caching
+* Avoid calling deprecated code
 
 
 ## V4.3 (07/04/2019)
