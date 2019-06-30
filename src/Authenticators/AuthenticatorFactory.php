@@ -35,9 +35,9 @@ class AuthenticatorFactory
     {
         switch ($method) {
             case 'oauth':
-                return new OauthAuthenticator(); // AUTH_OAUTH_TOKEN
+                return new OauthAuthenticator();
             case 'password':
-                return new PasswordAuthenticator(); // AUTH_HTTP_PASSWORD
+                return new PasswordAuthenticator();
         }
 
         throw new InvalidArgumentException("Unsupported authentication method [$method].");
