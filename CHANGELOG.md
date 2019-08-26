@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V5.2 (26/08/2019)
+
+* Added Laravel 6 support
+
+
 ## V5.1 (18/08/2019)
 
 * Work around Laravel caching bugs
