@@ -22,6 +22,7 @@ use Illuminate\Contracts\Config\Repository;
  * @method \Bitbucket\Api\Addon addon()
  * @method \Bitbucket\Api\CurrentUser currentUser()
  * @method \Bitbucket\Api\HookEvents hookEvents()
+ * @method \Bitbucket\Api\PullRequests pullRequests()
  * @method \Bitbucket\Api\Repositories repositories()
  * @method \Bitbucket\Api\Snippets snippets()
  * @method \Bitbucket\Api\Teams teams(string $username)
