@@ -106,7 +106,7 @@ Bitbucket::setDefaultConnection('alternative'); // the default is now alternativ
 // Get all the repositories info
 Bitbucket::connection()->repositories()->list();
 
-// Get all the repositories info filter by team
+// Get all the repositories info filtered by team
 Bitbucket::connection()->teams('matteogiacomo')->repositories()->list();
 ```
 
