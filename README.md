@@ -104,10 +104,10 @@ Bitbucket::getDefaultConnection(); // this will return main
 Bitbucket::setDefaultConnection('alternative'); // the default is now alternative
 
 // Get all the repositories info
-Bitbucket::connection()->repositories()->list();
+Bitbucket::repositories()->list();
 
 // Get all the repositories info filtered by team
-Bitbucket::connection()->teams('matteogiacomo')->repositories()->list();
+Bitbucket::teams('matteogiacomo')->repositories()->list();
 ```
 
 If you prefer to use dependency injection over facades like me, then you can easily inject the manager like so:
