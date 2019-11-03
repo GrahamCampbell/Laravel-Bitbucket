@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V5.3 (03/11/2019)
+
+* Require bitbucket/client 2.1
+* Support both HTTPlug v1 and v2
+
+
 ## V5.2 (26/08/2019)
 
 * Added Laravel 6 support
