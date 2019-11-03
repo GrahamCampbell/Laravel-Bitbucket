@@ -22,7 +22,7 @@ Laravel Bitbucket requires [PHP](https://php.net) 7.1-7.3. This particular versi
 To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any package that "provides" `php-http/client-implementation`. Most users will want:
 
 ```bash
-$ composer require graham-campbell/bitbucket php-http/guzzle6-adapter:^1.1
+$ composer require graham-campbell/bitbucket php-http/guzzle6-adapter:^2.0
 ```
 
 Once installed, if you are not using automatic package discovery, then you need to register the `GrahamCampbell\Bitbucket\BitbucketServiceProvider` service provider in your `config/app.php`.
