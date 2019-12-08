@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V5.3.1 (08/12/2019)
+
+* Added missing properties
+
+
 ## V5.3 (03/11/2019)
 
 * Require bitbucket/client 2.1
