@@ -19,6 +19,9 @@ use Illuminate\Contracts\Config\Repository;
 /**
  * This is the bitbucket manager class.
  *
+ * @method \Bitbucket\Client connection(string|null $name)
+ * @method \Bitbucket\Client reconnect(string|null $name)
+ * @method array<string,\Bitbucket\Client> getConnections(string $name)
  * @method \Bitbucket\Api\Addon addon()
  * @method \Bitbucket\Api\CurrentUser currentUser()
  * @method \Bitbucket\Api\HookEvents hookEvents()
