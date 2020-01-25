@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V5.4 (25/01/2020)
+
+* Added Laravel 7 support
+
+
 ## V5.3.1 (08/12/2019)
 
 * Added missing properties
