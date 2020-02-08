@@ -91,7 +91,7 @@ class BitbucketServiceProvider extends ServiceProvider
     {
         $this->app->singleton('bitbucket.factory', function (Container $app) {
             $auth = $app['bitbucket.authfactory'];
-            $cache = $app['cache'];
+            $cache = $app->bound('cache') ? $app->make('cache') : null;
 
             return new BitbucketFactory($auth, $cache);
         });

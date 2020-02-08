@@ -55,7 +55,7 @@ class BitbucketFactory
     /**
      * The illuminate cache factory instance.
      *
-     * @var \Illuminate\Contracts\Cache\Factory
+     * @var \Illuminate\Contracts\Cache\Factory|null
      */
     protected $cache;
 
@@ -63,11 +63,11 @@ class BitbucketFactory
      * Create a new bitbucket factory instance.
      *
      * @param \GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory $auth
-     * @param \Illuminate\Contracts\Cache\Factory                           $cache
+     * @param \Illuminate\Contracts\Cache\Factory|null                      $cache
      *
      * @return void
      */
-    public function __construct(AuthenticatorFactory $auth, Factory $cache)
+    public function __construct(AuthenticatorFactory $auth, Factory $cache = null)
     {
         $this->auth = $auth;
         $this->cache = $cache;
@@ -128,10 +128,16 @@ class BitbucketFactory
      *
      * @param bool|string $name
      *
+     * @throws \InvalidArgumentException
+     *
      * @return \Symfony\Component\Cache\Adapter\AdapterInterface
      */
     protected function getCacheAdapter($name)
     {
+        if (!$this->cache) {
+            throw new InvalidArgumentException('Caching support not available.');
+        }
+
         $store = $this->cache->store($name === true ? null : $name);
 
         $repo = new Psr16Cache($store, self::MIN_CACHE_LIFETIME, self::MAX_CACHE_LIFETIME);
