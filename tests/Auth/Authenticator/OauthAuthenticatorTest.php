@@ -11,20 +11,20 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\Tests\Bitbucket\Authenticators;
+namespace GrahamCampbell\Tests\Bitbucket\Auth\Authenticators;
 
 use Bitbucket\Client;
-use GrahamCampbell\Bitbucket\Authenticators\PasswordAuthenticator;
+use GrahamCampbell\Bitbucket\Auth\Authenticator\OauthAuthenticator;
 use GrahamCampbell\Tests\Bitbucket\AbstractTestCase;
 use InvalidArgumentException;
 use Mockery;
 
 /**
- * This is the password authenticator test class.
+ * This is the oauth authenticator test class.
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
-class PasswordAuthenticatorTest extends AbstractTestCase
+class OauthAuthenticatorTest extends AbstractTestCase
 {
     public function testMakeWithMethod()
     {
@@ -32,12 +32,11 @@ class PasswordAuthenticatorTest extends AbstractTestCase
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
-            ->with('http_password', 'your-username', 'your-password');
+            ->with('oauth_token', 'your-token');
 
         $return = $authenticator->with($client)->authenticate([
-            'username' => 'your-username',
-            'password' => 'your-password',
-            'method'   => 'password',
+            'token'  => 'your-token',
+            'method' => 'token',
         ]);
 
         $this->assertInstanceOf(Client::class, $return);
@@ -49,42 +48,25 @@ class PasswordAuthenticatorTest extends AbstractTestCase
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
-            ->with('http_password', 'your-username', 'your-password');
+            ->with('oauth_token', 'your-token');
 
         $return = $authenticator->with($client)->authenticate([
-            'username' => 'your-username',
-            'password' => 'your-password',
+            'token'  => 'your-token',
         ]);
 
         $this->assertInstanceOf(Client::class, $return);
     }
 
-    public function testMakeWithoutUsername()
+    public function testMakeWithoutToken()
     {
         $authenticator = $this->getAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The password authenticator requires a username and password.');
+        $this->expectExceptionMessage('The oauth authenticator requires a token.');
 
-        $authenticator->with($client)->authenticate([
-            'password' => 'your-password',
-        ]);
-    }
-
-    public function testMakeWithoutPassword()
-    {
-        $authenticator = $this->getAuthenticator();
-
-        $client = Mockery::mock(Client::class);
-
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The password authenticator requires a username and password.');
-
-        $authenticator->with($client)->authenticate([
-            'username' => 'your-username',
-        ]);
+        $authenticator->with($client)->authenticate([]);
     }
 
     public function testMakeWithoutSettingClient()
@@ -92,17 +74,16 @@ class PasswordAuthenticatorTest extends AbstractTestCase
         $authenticator = $this->getAuthenticator();
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The client instance was not given to the password authenticator.');
+        $this->expectExceptionMessage('The client instance was not given to the oauth authenticator.');
 
         $authenticator->authenticate([
-            'username' => 'your-username',
-            'password' => 'your-password',
-            'method'   => 'password',
+            'token'  => 'your-token',
+            'method' => 'token',
         ]);
     }
 
     protected function getAuthenticator()
     {
-        return new PasswordAuthenticator();
+        return new OauthAuthenticator();
     }
 }

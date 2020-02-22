@@ -17,7 +17,7 @@ Laravel Bitbucket was created by, and is maintained by [Graham Campbell](https:/
 
 ## Installation
 
-Laravel Bitbucket requires [PHP](https://php.net) 7.1-7.4. This particular version supports Laravel 5.5-7.
+Laravel Bitbucket requires [PHP](https://php.net) 7.2-7.4. This particular version supports Laravel 6-7.
 
 | Bitbucket | L5.1               | L5.2               | L5.3               | L5.4               | L5.5               | L5.6               | L5.7               | L5.8               | L6                 | L7                 |
 |-----------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
@@ -26,6 +26,7 @@ Laravel Bitbucket requires [PHP](https://php.net) 7.1-7.4. This particular versi
 | 3.0       | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                | :x:                |
 | 4.3       | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                |
 | 5.5       | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| 6.0       | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: |
 
 To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any package that "provides" `php-http/client-implementation`. Most users will want:
 
@@ -63,6 +64,10 @@ This option (`'default'`) is where you may specify which of the connections belo
 ##### Bitbucket Connections
 
 This option (`'connections'`) is where each of the connections are setup for your application. Example configuration has been included, but you may add as many connections as you would like. Note that the 3 supported authentication methods are: `"none"`, `"oauth"` and `"password"`.
+
+##### HTTP Cache
+
+This option (`'cache'`) is where each of the cache configurations setup for your application. Only the "illuminate" driver is provided out of the box. Example configuration has been included.
 
 
 ## Usage

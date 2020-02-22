@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\Bitbucket\Authenticators;
+namespace GrahamCampbell\Bitbucket\Auth\Authenticator;
 
 use Bitbucket\Client;
 use InvalidArgumentException;

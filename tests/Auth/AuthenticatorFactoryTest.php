@@ -11,11 +11,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\Tests\Bitbucket\Authenticators;
+namespace GrahamCampbell\Tests\Bitbucket\Auth;
 
-use GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory;
-use GrahamCampbell\Bitbucket\Authenticators\OauthAuthenticator;
-use GrahamCampbell\Bitbucket\Authenticators\PasswordAuthenticator;
+use GrahamCampbell\Bitbucket\Auth\Authenticator\OauthAuthenticator;
+use GrahamCampbell\Bitbucket\Auth\Authenticator\PasswordAuthenticator;
+use GrahamCampbell\Bitbucket\Auth\AuthenticatorFactory;
 use GrahamCampbell\Tests\Bitbucket\AbstractTestCase;
 use InvalidArgumentException;
 use TypeError;

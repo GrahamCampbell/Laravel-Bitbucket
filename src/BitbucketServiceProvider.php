@@ -14,7 +14,8 @@ declare(strict_types=1);
 namespace GrahamCampbell\Bitbucket;
 
 use Bitbucket\Client;
-use GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory;
+use GrahamCampbell\Bitbucket\Auth\AuthenticatorFactory;
+use GrahamCampbell\Bitbucket\Cache\ConnectionFactory;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
@@ -63,6 +64,7 @@ class BitbucketServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerAuthFactory();
+        $this->registerCacheFactory();
         $this->registerBitbucketFactory();
         $this->registerManager();
         $this->registerBindings();
@@ -83,6 +85,22 @@ class BitbucketServiceProvider extends ServiceProvider
     }
 
     /**
+     * Register the cache factory class.
+     *
+     * @return void
+     */
+    protected function registerCacheFactory()
+    {
+        $this->app->singleton('bitbucket.cachefactory', function (Container $app) {
+            $cache = $app->bound('cache') ? $app->make('cache') : null;
+
+            return new ConnectionFactory($cache);
+        });
+
+        $this->app->alias('bitbucket.cachefactory', ConnectionFactory::class);
+    }
+
+    /**
      * Register the bitbucket factory class.
      *
      * @return void
@@ -91,7 +109,7 @@ class BitbucketServiceProvider extends ServiceProvider
     {
         $this->app->singleton('bitbucket.factory', function (Container $app) {
             $auth = $app['bitbucket.authfactory'];
-            $cache = $app->bound('cache') ? $app->make('cache') : null;
+            $cache = $app['bitbucket.cachefactory'];
 
             return new BitbucketFactory($auth, $cache);
         });

@@ -14,9 +14,10 @@ declare(strict_types=1);
 namespace GrahamCampbell\Tests\Bitbucket;
 
 use Bitbucket\Client;
-use GrahamCampbell\Bitbucket\Authenticators\AuthenticatorFactory;
+use GrahamCampbell\Bitbucket\Auth\AuthenticatorFactory;
 use GrahamCampbell\Bitbucket\BitbucketFactory;
 use GrahamCampbell\Bitbucket\BitbucketManager;
+use GrahamCampbell\Bitbucket\Cache\ConnectionFactory;
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
 /**
@@ -31,6 +32,11 @@ class ServiceProviderTest extends AbstractTestCase
     public function testAuthFactoryIsInjectable()
     {
         $this->assertIsInjectable(AuthenticatorFactory::class);
+    }
+
+    public function testCacheFactoryIsInjectable()
+    {
+        $this->assertIsInjectable(ConnectionFactory::class);
     }
 
     public function testBitbucketFactoryIsInjectable()

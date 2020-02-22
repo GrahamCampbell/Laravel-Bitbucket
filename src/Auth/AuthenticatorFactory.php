@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\Bitbucket\Authenticators;
+namespace GrahamCampbell\Bitbucket\Auth;
 
 use InvalidArgumentException;
 
@@ -29,15 +29,15 @@ class AuthenticatorFactory
      *
      * @throws \InvalidArgumentException
      *
-     * @return \GrahamCampbell\Bitbucket\Authenticators\AuthenticatorInterface
+     * @return \GrahamCampbell\Bitbucket\Auth\Authenticator\AuthenticatorInterface
      */
     public function make(string $method)
     {
         switch ($method) {
             case 'oauth':
-                return new OauthAuthenticator();
+                return new Authenticator\OauthAuthenticator();
             case 'password':
-                return new PasswordAuthenticator();
+                return new Authenticator\PasswordAuthenticator();
         }
 
         throw new InvalidArgumentException("Unsupported authentication method [$method].");

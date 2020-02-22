@@ -2,6 +2,13 @@ CHANGE LOG
 ==========
 
 
+## V6.0 (Upcoming)
+
+* Dropped Laravel 5
+* Moved around internals
+* Reworked caching support
+
+
 ## V5.5 (08/02/2020)
 
 * Made caching truly optional
