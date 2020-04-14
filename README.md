@@ -159,14 +159,9 @@ If you discover a security vulnerability within this package, please send an ema
 Laravel Bitbucket is licensed under [The MIT License (MIT)](LICENSE).
 
 
----
 
-<div align="center">
-	<b>
-		<a href="https://tidelift.com/subscription/pkg/packagist-graham-campbell-bitbucket?utm_source=packagist-graham-campbell-bitbucket&utm_medium=referral&utm_campaign=readme">Get professional support for Laravel Bitbucket with a Tidelift subscription</a>
-	</b>
-	<br>
-	<sub>
-		Tidelift helps make open source sustainable for maintainers while giving companies<br>assurances about security, maintenance, and licensing for their dependencies.
-	</sub>
-</div>
+## For Enterprise
+
+Available as part of the Tidelift Subscription
+
+The maintainers of `graham-campbell/bitbucket` and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.](https://tidelift.com/subscription/pkg/packagist-graham-campbell-bitbucket?utm_source=packagist-graham-campbell-bitbucket&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
