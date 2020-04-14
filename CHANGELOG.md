@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V5.5.1 (14/04/2020)
+
+* Updated funding information
+
+
 ## V5.5 (08/02/2020)
 
 * Made caching truly optional
