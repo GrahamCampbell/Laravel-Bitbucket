@@ -6,11 +6,10 @@ Laravel Bitbucket was created by, and is maintained by [Graham Campbell](https:/
 ![Banner](https://user-images.githubusercontent.com/2829600/71477343-60993680-27e1-11ea-9e70-e6b9e459c31f.png)
 
 <p align="center">
+<a href="https://github.com/GrahamCampbell/Laravel-Bitbucket/actions?query=workflow%3ATests"><img src="https://img.shields.io/github/workflow/status/GrahamCampbell/Laravel-Bitbucket/Tests?label=Tests&style=flat-square" alt="Build Status"></img></a>
 <a href="https://github.styleci.io/repos/60779513"><img src="https://github.styleci.io/repos/60779513/shield" alt="StyleCI Status"></img></a>
-<a href="https://github.com/GrahamCampbell/Laravel-Bitbucket/actions?query=workflow%3ATests"><img src="https://img.shields.io/github/workflow/status/GrahamCampbell/Laravel-Bitbucket/Tests?style=flat-square" alt="Build Status"></img></a>
-<a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-Bitbucket/code-structure"><img src="https://img.shields.io/scrutinizer/coverage/g/GrahamCampbell/Laravel-Bitbucket?style=flat-square" alt="Coverage Status"></img></a>
-<a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-Bitbucket"><img src="https://img.shields.io/scrutinizer/g/GrahamCampbell/Laravel-Bitbucket?style=flat-square" alt="Quality Score"></img></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-brightgreen?style=flat-square" alt="Software License"></img></a>
+<a href="https://packagist.org/packages/graham-campbell/bitbucket"><img src="https://img.shields.io/packagist/dt/graham-campbell/bitbucket?style=flat-square" alt="Packagist Downloads"></img></a>
 <a href="https://github.com/GrahamCampbell/Laravel-Bitbucket/releases"><img src="https://img.shields.io/github/release/GrahamCampbell/Laravel-Bitbucket?style=flat-square" alt="Latest Version"></img></a>
 </p>
 
@@ -31,7 +30,7 @@ Laravel Bitbucket requires [PHP](https://php.net) 7.2-7.4. This particular versi
 To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any package that "provides" `php-http/client-implementation`. Most users will want:
 
 ```bash
-$ composer require graham-campbell/bitbucket php-http/guzzle6-adapter:^2.0
+$ composer require graham-campbell/bitbucket:^6.0 php-http/guzzle6-adapter:^2.0
 ```
 
 Once installed, if you are not using automatic package discovery, then you need to register the `GrahamCampbell\Bitbucket\BitbucketServiceProvider` service provider in your `config/app.php`.
