@@ -1,7 +1,7 @@
 Laravel Bitbucket
 =================
 
-Laravel Bitbucket was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a [Bitbucket API Client](https://github.com/BitbucketAPI/Client) bridge for [Laravel](http://laravel.com). It utilises my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-Bitbucket/releases), [security policy](https://github.com/GrahamCampbell/Laravel-Bitbucket/security/policy), [license](LICENSE), [code of conduct](.github/CODE_OF_CONDUCT.md), and [contribution guidelines](.github/CONTRIBUTING.md).
+Laravel Bitbucket was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a [Bitbucket PHP API Client](https://github.com/BitbucketPHP/Client) bridge for [Laravel](http://laravel.com). It utilises my [Laravel Manager](https://github.com/GrahamCampbell/Laravel-Manager) package. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-Bitbucket/releases), [security policy](https://github.com/GrahamCampbell/Laravel-Bitbucket/security/policy), [license](LICENSE), [code of conduct](.github/CODE_OF_CONDUCT.md), and [contribution guidelines](.github/CONTRIBUTING.md).
 
 ![Banner](https://user-images.githubusercontent.com/2829600/71477343-60993680-27e1-11ea-9e70-e6b9e459c31f.png)
 
@@ -146,7 +146,7 @@ class Foo
 App::make('Foo')->bar();
 ```
 
-For more information on how to use the `\Bitbucket\Client` class we are calling behind the scenes here, check out the docs at https://github.com/BitbucketAPI/Client, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
+For more information on how to use the `\Bitbucket\Client` class we are calling behind the scenes here, check out the docs at https://github.com/BitbucketPHP/Client, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
 
 ##### Further Information
 
