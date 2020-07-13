@@ -30,7 +30,7 @@ Laravel Bitbucket requires [PHP](https://php.net) 7.2-7.4. This particular versi
 To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any package that "provides" `php-http/client-implementation`. Most users will want:
 
 ```bash
-$ composer require graham-campbell/bitbucket:^6.0 php-http/guzzle6-adapter:^2.0
+$ composer require graham-campbell/bitbucket:^7.0 guzzlehttp/guzzle:^7.0.1 http-interop/http-factory-guzzle:^1.0
 ```
 
 Once installed, if you are not using automatic package discovery, then you need to register the `GrahamCampbell\Bitbucket\BitbucketServiceProvider` service provider in your `config/app.php`.
@@ -118,8 +118,8 @@ Bitbucket::setDefaultConnection('alternative'); // the default is now alternativ
 // Get all the repositories info
 Bitbucket::repositories()->list();
 
-// Get all the repositories info filtered by team
-Bitbucket::teams('example')->repositories()->list();
+// Get all the repositories info filtered by workspace
+Bitbucket::workspaces('example')->repositories()->list();
 ```
 
 If you prefer to use dependency injection over facades like me, then you can easily inject the manager like so:

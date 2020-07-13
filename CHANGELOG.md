@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V7.0 (UPCOMING)
+
+* Require bitbucket/client 3.0
+
+
 ## V6.0.1 (14/04/2020)
 
 * Updated funding information
