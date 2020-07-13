@@ -38,9 +38,6 @@
         "preferred-install": "dist"
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "5.5-dev"
-        },
         "laravel": {
             "providers": [
                 "GrahamCampbell\\Bitbucket\\BitbucketServiceProvider"
