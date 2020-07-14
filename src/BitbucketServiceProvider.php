@@ -159,6 +159,7 @@ class BitbucketServiceProvider extends ServiceProvider
     {
         return [
             'bitbucket.authfactory',
+            'bitbucket.cachefactory',
             'bitbucket.factory',
             'bitbucket',
             'bitbucket.connection',

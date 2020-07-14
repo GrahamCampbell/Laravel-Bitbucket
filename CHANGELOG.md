@@ -7,6 +7,11 @@ CHANGE LOG
 * Require bitbucket/client 3.0
 
 
+## V6.0.2 (14/07/2020)
+
+* Added missing cachefactory provides
+
+
 ## V6.0.1 (14/04/2020)
 
 * Updated funding information
