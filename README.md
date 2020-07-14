@@ -28,7 +28,7 @@ Laravel Bitbucket requires [PHP](https://php.net) 7.2-7.4. This particular versi
 | 6.0       | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: |
 | 7.0       | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: |
 
-To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any package that "provides" `php-http/client-implementation`. Most users will want:
+To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any packages that "provide" `psr/http-client-implementation` and `psr/http-factory-implementation`. Most users will want:
 
 ```bash
 $ composer require graham-campbell/bitbucket:^7.0 guzzlehttp/guzzle:^7.0.1 http-interop/http-factory-guzzle:^1.0
