@@ -29,6 +29,13 @@ use InvalidArgumentException;
 class BitbucketFactory
 {
     /**
+     * The cache lifetime of 48 hours.
+     *
+     * @var int
+     */
+    private const CACHE_LIFETIME = 172800;
+
+    /**
      * The authenticator factory instance.
      *
      * @var \GrahamCampbell\Bitbucket\Auth\AuthenticatorFactory
@@ -100,7 +107,7 @@ class BitbucketFactory
         }
 
         if (is_array($cache = Arr::get($config, 'cache', false))) {
-            $builder->addCache($this->cache->make($cache));
+            $builder->addCache($this->cache->make($cache), ['cache_lifetime' => self::CACHE_LIFETIME]);
         }
 
         return $builder;
