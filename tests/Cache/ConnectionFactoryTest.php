@@ -15,12 +15,12 @@ namespace GrahamCampbell\Tests\Bitbucket\Cache;
 
 use GrahamCampbell\Bitbucket\Cache\ConnectionFactory;
 use GrahamCampbell\Bitbucket\Cache\Connector\IlluminateConnector;
+use GrahamCampbell\BoundedCache\BoundedCacheInterface;
 use GrahamCampbell\TestBench\AbstractTestCase;
 use Illuminate\Cache\Repository;
 use Illuminate\Contracts\Cache\Factory;
 use InvalidArgumentException;
 use Mockery;
-use Psr\Cache\CacheItemPoolInterface;
 
 /**
  * This is the cache connection factory test class.
@@ -37,7 +37,7 @@ class ConnectionFactoryTest extends AbstractTestCase
 
         $return = $factory->make(['name' => 'foo', 'driver' => 'illuminate', 'connector' => 'redis']);
 
-        $this->assertInstanceOf(CacheItemPoolInterface::class, $return);
+        $this->assertInstanceOf(BoundedCacheInterface::class, $return);
     }
 
     public function testCreateIlluminateConnector()
