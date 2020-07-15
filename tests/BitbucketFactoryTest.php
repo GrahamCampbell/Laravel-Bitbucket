@@ -17,12 +17,12 @@ use Bitbucket\Client;
 use GrahamCampbell\Bitbucket\Auth\AuthenticatorFactory;
 use GrahamCampbell\Bitbucket\BitbucketFactory;
 use GrahamCampbell\Bitbucket\Cache\ConnectionFactory;
+use GrahamCampbell\BoundedCache\BoundedCacheInterface;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
 use Http\Client\Common\HttpMethodsClient;
 use Illuminate\Contracts\Cache\Factory;
 use InvalidArgumentException;
 use Mockery;
-use Psr\Cache\CacheItemPoolInterface;
 
 /**
  * This is the bitbucket factory test class.
@@ -45,7 +45,7 @@ class BitbucketFactoryTest extends AbstractTestBenchTestCase
     {
         $factory = $this->getFactory();
 
-        $factory[1]->shouldReceive('make')->once()->with(['name' => 'main', 'driver' => 'illuminate'])->andReturn(Mockery::mock(CacheItemPoolInterface::class));
+        $factory[1]->shouldReceive('make')->once()->with(['name' => 'main', 'driver' => 'illuminate'])->andReturn(Mockery::mock(BoundedCacheInterface::class));
 
         $client = $factory[0]->make(['token' => 'your-token', 'method' => 'oauth', 'cache' => ['name' => 'main', 'driver' => 'illuminate']]);
 
@@ -57,7 +57,7 @@ class BitbucketFactoryTest extends AbstractTestBenchTestCase
     {
         $factory = $this->getFactory();
 
-        $factory[1]->shouldReceive('make')->once()->with(['name' => 'main', 'driver' => 'illuminate', 'connection' => 'foo'])->andReturn(Mockery::mock(CacheItemPoolInterface::class));
+        $factory[1]->shouldReceive('make')->once()->with(['name' => 'main', 'driver' => 'illuminate', 'connection' => 'foo'])->andReturn(Mockery::mock(BoundedCacheInterface::class));
 
         $client = $factory[0]->make(['token' => 'your-token', 'method' => 'oauth', 'cache' => ['name' => 'main', 'driver' => 'illuminate', 'connection' => 'foo']]);
 
