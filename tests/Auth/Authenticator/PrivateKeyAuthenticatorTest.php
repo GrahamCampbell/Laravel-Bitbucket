@@ -17,7 +17,6 @@ use Bitbucket\Client;
 use GrahamCampbell\Bitbucket\Auth\Authenticator\PrivateKeyAuthenticator;
 use GrahamCampbell\Tests\Bitbucket\AbstractTestCase;
 use InvalidArgumentException;
-use Lcobucci\JWT\Token;
 use Mockery;
 
 class PrivateKeyAuthenticatorTest extends AbstractTestCase
