@@ -13,8 +13,10 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Tests\Bitbucket\Auth;
 
+use GrahamCampbell\Bitbucket\Auth\Authenticator\JwtAuthenticator;
 use GrahamCampbell\Bitbucket\Auth\Authenticator\OauthAuthenticator;
 use GrahamCampbell\Bitbucket\Auth\Authenticator\PasswordAuthenticator;
+use GrahamCampbell\Bitbucket\Auth\Authenticator\PrivateKeyAuthenticator;
 use GrahamCampbell\Bitbucket\Auth\AuthenticatorFactory;
 use GrahamCampbell\Tests\Bitbucket\AbstractTestCase;
 use InvalidArgumentException;
@@ -36,6 +38,15 @@ class AuthenticatorFactoryTest extends AbstractTestCase
         $this->assertInstanceOf(OauthAuthenticator::class, $return);
     }
 
+    public function testMakeJwtAuthenticator()
+    {
+        $factory = $this->getFactory();
+
+        $return = $factory->make('jwt');
+
+        $this->assertInstanceOf(JwtAuthenticator::class, $return);
+    }
+
     public function testMakePasswordAuthenticator()
     {
         $factory = $this->getFactory();
@@ -43,6 +54,15 @@ class AuthenticatorFactoryTest extends AbstractTestCase
         $return = $factory->make('password');
 
         $this->assertInstanceOf(PasswordAuthenticator::class, $return);
+    }
+
+    public function testMakePrivateKeyAuthenticator()
+    {
+        $factory = $this->getFactory();
+
+        $return = $factory->make('private');
+
+        $this->assertInstanceOf(PrivateKeyAuthenticator::class, $return);
     }
 
     public function testMakeInvalidAuthenticator()

@@ -5,6 +5,7 @@ CHANGE LOG
 ## V7.0 (UPCOMING)
 
 * Require bitbucket/client 3.0
+* Added JWT authentication support
 
 
 ## V6.0.2 (14/07/2020)

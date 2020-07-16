@@ -33,8 +33,8 @@ return [
     |
     | Here are each of the connections setup for your application. Example
     | configuration has been included, but you may add as many connections as
-    | you would like. Note that the 3 supported authentication methods are:
-    | "none", "oauth" and "password".
+    | you would like. Note that the 5 supported authentication methods are:
+    | "jwt", "none", "oauth", "private", and "token".
     |
     */
 
@@ -55,6 +55,34 @@ return [
             // 'backoff'  => false,
             // 'cache'    => false,
             // 'url'      => null,
+        ],
+
+        'jwt' => [
+            'method'       => 'jwt',
+            'token'        => 'your-jwt-token',
+            // 'backoff'      => false,
+            // 'cache'        => false,
+            // 'version'      => 'v3',
+            // 'enterprise'   => false,
+        ],
+
+        'private' => [
+            'method'     => 'private',
+            'appId'      => 'your-bitbucket-app-id',
+            'keyPath'    => 'your-private-key-path',
+            // 'key'        => 'your-private-key-content',
+            // 'backoff'    => false,
+            // 'cache'      => false,
+            // 'version'    => 'v3',
+            // 'enterprise' => false,
+        ],
+
+        'none' => [
+            'method'     => 'none',
+            // 'backoff'    => false,
+            // 'cache'      => false,
+            // 'version'    => 'v3',
+            // 'enterprise' => false,
         ],
 
     ],

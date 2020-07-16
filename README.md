@@ -63,7 +63,7 @@ This option (`'default'`) is where you may specify which of the connections belo
 
 ##### Bitbucket Connections
 
-This option (`'connections'`) is where each of the connections are setup for your application. Example configuration has been included, but you may add as many connections as you would like. Note that the 3 supported authentication methods are: `"none"`, `"oauth"` and `"password"`.
+This option (`'connections'`) is where each of the connections are setup for your application. Example configuration has been included, but you may add as many connections as you would like. Note that the 5 supported authentication methods are: `"jwt"`, `"none"`, `"oauth"`, `"private"` and `"password"`.
 
 ##### HTTP Cache
 
