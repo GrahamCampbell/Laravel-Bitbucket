@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V7.1 (UPCOMING)
+
+* Require bitbucket/client 3.1
+
+
 ## V7.0 (UPCOMING)
 
 * Require bitbucket/client 3.0
