@@ -33,7 +33,7 @@ use Illuminate\Support\Arr;
  * @method \Bitbucket\Api\Users users(string $username)
  * @method void authenticate(string $method, string $token, string|null $password)
  * @method \Psr\Http\Message\ResponseInterface|null getLastResponse()
- * @method \Http\Client\Common\HttpMethodsClient getHttpClient()
+ * @method \Http\Client\Common\HttpMethodsClientInterface getHttpClient()
  *
  * @author Graham Campbell <graham@alt-three.com>
  */
