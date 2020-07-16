@@ -7,7 +7,7 @@ CHANGE LOG
 * Require bitbucket/client 3.1
 
 
-## V7.0 (UPCOMING)
+## V7.0 (16/07/2020)
 
 * Require bitbucket/client 3.0
 * Added JWT authentication support
