@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Bitbucket\Auth\Authenticator;
 
+use Bitbucket\Client;
 use DateInterval;
 use DateTimeImmutable;
-use Bitbucket\Client;
 use InvalidArgumentException;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Signer\Key;
