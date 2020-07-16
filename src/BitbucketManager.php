@@ -29,9 +29,10 @@ use Illuminate\Support\Arr;
  * @method \Bitbucket\Api\PullRequests pullRequests()
  * @method \Bitbucket\Api\Repositories repositories()
  * @method \Bitbucket\Api\Snippets snippets()
- * @method \Bitbucket\Api\Teams teams(string $username)
  * @method \Bitbucket\Api\Users users(string $username)
+ * @method \Bitbucket\Api\Workspaces workspaces(string $workspace)
  * @method void authenticate(string $method, string $token, string|null $password)
+ * @method void setUrl(string $url)
  * @method \Psr\Http\Message\ResponseInterface|null getLastResponse()
  * @method \Http\Client\Common\HttpMethodsClientInterface getHttpClient()
  *
