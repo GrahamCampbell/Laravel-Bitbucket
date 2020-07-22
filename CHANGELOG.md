@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V7.1 (UPCOMING)
+## V7.1 (22/07/2020)
 
 * Require bitbucket/client 3.1
 
