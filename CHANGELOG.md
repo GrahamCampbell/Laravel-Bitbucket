@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V7.2 (UPCOMING)
+
+* Support Laravel 8
+* Require bitbucket/client 3.2
+
+
 ## V7.1 (22/07/2020)
 
 * Require bitbucket/client 3.1
