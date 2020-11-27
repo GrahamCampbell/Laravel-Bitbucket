@@ -41,7 +41,7 @@ $ composer require graham-campbell/bitbucket:^7.3 guzzlehttp/guzzle:^7.0.1 http-
 If you'd like to use the private key authenticator, then you will also need to install `lcobucci/jwt`:
 
 ```bash
-$ composer require lcobucci/jwt:^3.3
+$ composer require lcobucci/jwt:^3.4
 ```
 
 on PHP 7, or on PHP 8:
