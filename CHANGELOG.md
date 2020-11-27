@@ -7,6 +7,7 @@ CHANGE LOG
 * Support PHP 8
 * Require bitbucket/client 3.3
 * Upgrade to lcobucci/jwt ^3.4 || ^4.0
+* Manager phpdoc fixes
 
 
 ## V7.2 (16/08/2020)
