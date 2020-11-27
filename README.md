@@ -44,7 +44,7 @@ If you'd like to use the private key authenticator, then you will also need to i
 $ composer require lcobucci/jwt:^3.4
 ```
 
-on PHP 7, or on PHP 8:
+or:
 
 ```bash
 $ composer require lcobucci/jwt:^4.0
