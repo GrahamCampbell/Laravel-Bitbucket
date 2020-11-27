@@ -20,9 +20,10 @@ use Illuminate\Support\Arr;
 /**
  * This is the bitbucket manager class.
  *
- * @method \Bitbucket\Client                              connection(string|null $name)
- * @method \Bitbucket\Client                              reconnect(string|null $name)
- * @method array<string,\Bitbucket\Client>                getConnections(string $name)
+ * @method \Bitbucket\Client                              connection(string|null $name = null)
+ * @method \Bitbucket\Client                              reconnect(string|null $name = null)
+ * @method void                                           disconnect(string|null $name = null)
+ * @method array<string,\Bitbucket\Client>                getConnections()
  * @method \Bitbucket\Api\Addon                           addon()
  * @method \Bitbucket\Api\CurrentUser                     currentUser()
  * @method \Bitbucket\Api\HookEvents                      hookEvents()
@@ -31,7 +32,7 @@ use Illuminate\Support\Arr;
  * @method \Bitbucket\Api\Snippets                        snippets()
  * @method \Bitbucket\Api\Users                           users(string $username)
  * @method \Bitbucket\Api\Workspaces                      workspaces(string $workspace)
- * @method void                                           authenticate(string $method, string $token, string|null $password)
+ * @method void                                           authenticate(string $method, string $token, string|null $password = null)
  * @method void                                           setUrl(string $url)
  * @method \Psr\Http\Message\ResponseInterface|null       getLastResponse()
  * @method \Http\Client\Common\HttpMethodsClientInterface getHttpClient()
