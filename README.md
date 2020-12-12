@@ -36,7 +36,7 @@ Laravel Bitbucket requires [PHP](https://php.net) 7.2-8.0. This particular versi
 To get the latest version, simply require the project using [Composer](https://getcomposer.org). You will need to install any packages that "provide" `psr/http-client-implementation` and `psr/http-factory-implementation`. Most users will want:
 
 ```bash
-$ composer require graham-campbell/bitbucket:^8.0 guzzlehttp/guzzle:^7.0.1 http-interop/http-factory-guzzle:^1.0
+$ composer require graham-campbell/bitbucket:^8.0 guzzlehttp/guzzle:^7.2 http-interop/http-factory-guzzle:^1.0
 ```
 
 If you'd like to use the private key authenticator, then you will also need to install `lcobucci/jwt`:
