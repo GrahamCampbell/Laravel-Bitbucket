@@ -164,7 +164,7 @@ class Foo
 App::make('Foo')->bar();
 ```
 
-For more information on how to use the `Bitbucket\Client` class we are calling behind the scenes here, check out the docs at https://github.com/BitbucketPHP/Client/tree/v3.3.1#usage, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
+For more information on how to use the `Bitbucket\Client` class we are calling behind the scenes here, check out the docs at https://github.com/BitbucketPHP/Client/tree/v4.0.0#usage, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
 
 ##### Further Information
 
