@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V7.3.1 (08/01/2021)
+
+* Tweaked private token auth
+
+
 ## V7.3 (27/11/2020)
 
 * Support PHP 8
