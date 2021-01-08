@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V8.0.1 (UPCOMING)
+
+* Tweaked private token auth
+
+
 ## V8.0 (22/12/2020)
 
 * Require bitbucket/client 4.0
