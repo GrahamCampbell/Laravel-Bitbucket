@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V8.0.1 (UPCOMING)
+## V8.0.1 (08/01/2021)
 
 * Tweaked private token auth
 
