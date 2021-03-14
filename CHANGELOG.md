@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V8.1 (UPCOMING)
+
+* Require bitbucket/client 4.1
+
+
 ## V8.0.2 (14/01/2021)
 
 * Always build keys using integer timestamps
