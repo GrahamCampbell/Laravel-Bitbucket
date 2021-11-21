@@ -133,7 +133,7 @@ Bitbucket::setDefaultConnection('alternative'); // the default is now alternativ
 Bitbucket::repositories()->list();
 
 // Get all the repositories info filtered by workspace
-Bitbucket::workspaces('example')->repositories()->list();
+Bitbucket::repositories()->workspaces('example')->list();
 ```
 
 If you prefer to use dependency injection over facades like me, then you can easily inject the manager like so:
