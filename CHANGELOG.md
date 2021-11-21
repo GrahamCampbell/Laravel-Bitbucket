@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V8.0.3 (21/11/2021)
+
+* Provisional PHP 8.1 support
+* Updated package metadata
+
+
 ## V8.0.2 (14/01/2021)
 
 * Always build keys using integer timestamps
