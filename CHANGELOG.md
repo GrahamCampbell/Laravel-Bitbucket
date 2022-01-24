@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V8.1 (UPCOMING)
+
+* Support Laravel 9
+* Require bitbucket/client 4.1
+
+
 ## V8.0.3 (21/11/2021)
 
 * Provisional PHP 8.1 support
