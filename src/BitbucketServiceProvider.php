@@ -13,12 +13,12 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Bitbucket;
 
-use GuzzleHttp\Client as GuzzleClient;
-use GuzzleHttp\Psr7\HttpFactory as GuzzlePsrFactory;
 use Bitbucket\Client;
 use GrahamCampbell\Bitbucket\Auth\AuthenticatorFactory;
 use GrahamCampbell\Bitbucket\Cache\ConnectionFactory;
 use GrahamCampbell\Bitbucket\HttpClient\BuilderFactory;
+use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Psr7\HttpFactory as GuzzlePsrFactory;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
