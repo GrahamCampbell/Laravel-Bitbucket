@@ -81,7 +81,7 @@ class BitbucketServiceProvider extends ServiceProvider
      */
     protected function registerHttpClientFactory()
     {
-        $this->app->singleton('gitlab.httpclientfactory', function () {
+        $this->app->singleton('bitbucket.httpclientfactory', function () {
             $psrFactory = new GuzzlePsrFactory();
 
             return new BuilderFactory(
@@ -91,7 +91,7 @@ class BitbucketServiceProvider extends ServiceProvider
             );
         });
 
-        $this->app->alias('gitlab.httpclientfactory', BuilderFactory::class);
+        $this->app->alias('bitbucket.httpclientfactory', BuilderFactory::class);
     }
 
     /**
