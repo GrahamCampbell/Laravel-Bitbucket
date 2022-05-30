@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V8.1.1 (30/05/2022)
+
+* Support graham-campbell/bounded-cache v2 too
+
+
 ## V8.1 (24/01/2022)
 
 * Support Laravel 9
