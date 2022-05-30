@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace GrahamCampbell\Bitbucket;
 
 use Bitbucket\Client;
-use Bitbucket\HttpClient\Builder;
 use GrahamCampbell\Bitbucket\Auth\AuthenticatorFactory;
 use GrahamCampbell\Bitbucket\Cache\ConnectionFactory;
+use GrahamCampbell\Bitbucket\HttpClient\BuilderFactory;
 use Http\Client\Common\Plugin\RetryPlugin;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
@@ -29,6 +29,13 @@ use Symfony\Component\Cache\Adapter\Psr16Adapter;
  */
 class BitbucketFactory
 {
+    /**
+     * The http client builder factory instance.
+     *
+     * @var \GrahamCampbell\Bitbucket\HttpClient\BuilderFactory
+     */
+    protected $builder;
+
     /**
      * The authenticator factory instance.
      *
@@ -46,13 +53,15 @@ class BitbucketFactory
     /**
      * Create a new bitbucket factory instance.
      *
+     * @param \GrahamCampbell\Bitbucket\HttpClient\BuilderFactory $builder
      * @param \GrahamCampbell\Bitbucket\Auth\AuthenticatorFactory $auth
      * @param \GrahamCampbell\Bitbucket\Cache\ConnectionFactory   $cache
      *
      * @return void
      */
-    public function __construct(AuthenticatorFactory $auth, ConnectionFactory $cache)
+    public function __construct(BuilderFactory $builder, AuthenticatorFactory $auth, ConnectionFactory $cache)
     {
+        $this->builder = $builder;
         $this->auth = $auth;
         $this->cache = $cache;
     }
@@ -94,7 +103,7 @@ class BitbucketFactory
      */
     protected function getBuilder(array $config)
     {
-        $builder = new Builder();
+        $builder = $this->builder->make();
 
         if ($backoff = Arr::get($config, 'backoff')) {
             $builder->addPlugin(new RetryPlugin(['retries' => $backoff === true ? 2 : $backoff]));

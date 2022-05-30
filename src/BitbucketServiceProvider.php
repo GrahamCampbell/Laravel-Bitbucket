@@ -13,9 +13,12 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Bitbucket;
 
+use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Psr7\HttpFactory as GuzzlePsrFactory;
 use Bitbucket\Client;
 use GrahamCampbell\Bitbucket\Auth\AuthenticatorFactory;
 use GrahamCampbell\Bitbucket\Cache\ConnectionFactory;
+use GrahamCampbell\Bitbucket\HttpClient\BuilderFactory;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
@@ -63,11 +66,32 @@ class BitbucketServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->registerHttpClientFactory();
         $this->registerAuthFactory();
         $this->registerCacheFactory();
         $this->registerBitbucketFactory();
         $this->registerManager();
         $this->registerBindings();
+    }
+
+    /**
+     * Register the http client factory class.
+     *
+     * @return void
+     */
+    protected function registerHttpClientFactory(()
+    {
+        $this->app->singleton('gitlab.httpclientfactory', function () {
+            $psrFactory = new GuzzlePsrFactory();
+
+            return new BuilderFactory(
+                new GuzzleClient(['connect_timeout' => 10, 'timeout' => 30]),
+                $psrFactory,
+                $psrFactory,
+            );
+        });
+
+        $this->app->alias('gitlab.httpclientfactory', BuilderFactory::class);
     }
 
     /**
@@ -108,10 +132,11 @@ class BitbucketServiceProvider extends ServiceProvider
     protected function registerBitbucketFactory()
     {
         $this->app->singleton('bitbucket.factory', function (Container $app) {
+            $builder = $app['bitbucket.httpclientfactory'];
             $auth = $app['bitbucket.authfactory'];
             $cache = $app['bitbucket.cachefactory'];
 
-            return new BitbucketFactory($auth, $cache);
+            return new BitbucketFactory($builder, $auth, $cache);
         });
 
         $this->app->alias('bitbucket.factory', BitbucketFactory::class);
@@ -158,6 +183,7 @@ class BitbucketServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
+            'bitbucket.httpclientfactory',
             'bitbucket.authfactory',
             'bitbucket.cachefactory',
             'bitbucket.factory',
