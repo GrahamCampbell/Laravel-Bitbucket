@@ -79,7 +79,7 @@ class BitbucketServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerHttpClientFactory(()
+    protected function registerHttpClientFactory()
     {
         $this->app->singleton('gitlab.httpclientfactory', function () {
             $psrFactory = new GuzzlePsrFactory();
