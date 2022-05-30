@@ -15,10 +15,10 @@ namespace GrahamCampbell\Tests\Bitbucket;
 
 use Bitbucket\Client;
 use GrahamCampbell\Bitbucket\Auth\AuthenticatorFactory;
-use GrahamCampbell\Bitbucket\HttpClient\BuilderFactory;
 use GrahamCampbell\Bitbucket\BitbucketFactory;
 use GrahamCampbell\Bitbucket\BitbucketManager;
 use GrahamCampbell\Bitbucket\Cache\ConnectionFactory;
+use GrahamCampbell\Bitbucket\HttpClient\BuilderFactory;
 use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
 /**
