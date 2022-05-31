@@ -17,8 +17,11 @@ use Bitbucket\Client;
 use GrahamCampbell\Bitbucket\Auth\AuthenticatorFactory;
 use GrahamCampbell\Bitbucket\BitbucketFactory;
 use GrahamCampbell\Bitbucket\Cache\ConnectionFactory;
+use GrahamCampbell\Bitbucket\HttpClient\BuilderFactory;
 use GrahamCampbell\BoundedCache\BoundedCacheInterface;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
+use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Psr7\HttpFactory as GuzzlePsrFactory;
 use Http\Client\Common\HttpMethodsClientInterface;
 use Illuminate\Contracts\Cache\Factory;
 use InvalidArgumentException;
@@ -133,8 +136,16 @@ class BitbucketFactoryTest extends AbstractTestBenchTestCase
 
     protected function getFactory()
     {
+        $psrFactory = new GuzzlePsrFactory();
+
+        $builder = new BuilderFactory(
+            new GuzzleClient(['connect_timeout' => 10, 'timeout' => 30]),
+            $psrFactory,
+            $psrFactory,
+        );
+
         $cache = Mockery::mock(ConnectionFactory::class);
 
-        return [new BitbucketFactory(new AuthenticatorFactory(), $cache), $cache];
+        return [new BitbucketFactory($builder, new AuthenticatorFactory(), $cache), $cache];
     }
 }
