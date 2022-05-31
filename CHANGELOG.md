@@ -2,11 +2,12 @@ CHANGE LOG
 ==========
 
 
-## V9.0 (30/05/2022)
+## V9.0 (31/05/2022)
 
 * Dropped PHP < 7.4
 * Dropped Laravel < 8
 * Require bitbucket/client 4.2
+* Require lcobucci/jwt ^4.1.5
 
 
 ## V8.1.1 (30/05/2022)
