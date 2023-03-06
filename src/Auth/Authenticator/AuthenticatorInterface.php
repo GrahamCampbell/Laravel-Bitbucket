@@ -27,9 +27,9 @@ interface AuthenticatorInterface
      *
      * @param \Bitbucket\Client $client
      *
-     * @return \GrahamCampbell\Bitbucket\Auth\Authenticator\AuthenticatorInterface
+     * @return self
      */
-    public function with(Client $client);
+    public function with(Client $client): AuthenticatorInterface;
 
     /**
      * Authenticate the client, and return it.
@@ -40,5 +40,5 @@ interface AuthenticatorInterface
      *
      * @return \Bitbucket\Client
      */
-    public function authenticate(array $config);
+    public function authenticate(array $config): Client;
 }

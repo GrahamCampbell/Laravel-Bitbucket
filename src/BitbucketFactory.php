@@ -14,6 +14,8 @@ declare(strict_types=1);
 namespace GrahamCampbell\Bitbucket;
 
 use Bitbucket\Client;
+use Bitbucket\HttpClient\Builder;
+use GrahamCampbell\Bitbucket\Auth\Authenticator\AuthenticatorInterface;
 use GrahamCampbell\Bitbucket\Auth\AuthenticatorFactory;
 use GrahamCampbell\Bitbucket\Cache\ConnectionFactory;
 use GrahamCampbell\Bitbucket\HttpClient\BuilderFactory;
@@ -34,21 +36,21 @@ class BitbucketFactory
      *
      * @var \GrahamCampbell\Bitbucket\HttpClient\BuilderFactory
      */
-    protected $builder;
+    private BuilderFactory $builder;
 
     /**
      * The authenticator factory instance.
      *
      * @var \GrahamCampbell\Bitbucket\Auth\AuthenticatorFactory
      */
-    protected $auth;
+    private AuthenticatorFactory $auth;
 
     /**
      * The cache factory instance.
      *
      * @var \GrahamCampbell\Bitbucket\Cache\ConnectionFactory
      */
-    protected $cache;
+    private ConnectionFactory $cache;
 
     /**
      * Create a new bitbucket factory instance.
@@ -75,7 +77,7 @@ class BitbucketFactory
      *
      * @return \Bitbucket\Client
      */
-    public function make(array $config)
+    public function make(array $config): Client
     {
         $client = new Client($this->getBuilder($config));
 
@@ -91,7 +93,7 @@ class BitbucketFactory
             return $client;
         }
 
-        return $this->auth->make($config['method'])->with($client)->authenticate($config);
+        return $this->getAuthenticator($config['method'])->with($client)->authenticate($config);
     }
 
     /**
@@ -101,7 +103,7 @@ class BitbucketFactory
      *
      * @return \Bitbucket\HttpClient\Builder
      */
-    protected function getBuilder(array $config)
+    protected function getBuilder(array $config): Builder
     {
         $builder = $this->builder->make();
 
@@ -119,5 +121,17 @@ class BitbucketFactory
         }
 
         return $builder;
+    }
+
+    /**
+     * Get the authenticator.
+     *
+     * @throws \InvalidArgumentException
+     *
+     * @return \GrahamCampbell\Bitbucket\Auth\Authenticator\AuthenticatorInterface
+     */
+    protected function getAuthenticator(string $method): AuthenticatorInterface
+    {
+        return $this->auth->make($method);
     }
 }

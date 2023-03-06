@@ -32,18 +32,16 @@ final class OauthAuthenticator extends AbstractAuthenticator
      *
      * @return \Bitbucket\Client
      */
-    public function authenticate(array $config)
+    public function authenticate(array $config): Client
     {
-        if (!$this->client) {
-            throw new InvalidArgumentException('The client instance was not given to the oauth authenticator.');
-        }
+        $client = $this->getClient();
 
         if (!array_key_exists('token', $config)) {
             throw new InvalidArgumentException('The oauth authenticator requires a token.');
         }
 
-        $this->client->authenticate(Client::AUTH_OAUTH_TOKEN, $config['token']);
+        $client->authenticate(Client::AUTH_OAUTH_TOKEN, $config['token']);
 
-        return $this->client;
+        return $client;
     }
 }

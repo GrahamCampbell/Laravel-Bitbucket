@@ -6,7 +6,7 @@ Laravel Bitbucket was created by, and is maintained by [Graham Campbell](https:/
 ![Banner](https://user-images.githubusercontent.com/2829600/71477343-60993680-27e1-11ea-9e70-e6b9e459c31f.png)
 
 <p align="center">
-<a href="https://github.com/GrahamCampbell/Laravel-Bitbucket/actions?query=workflow%3ATests"><img src="https://img.shields.io/github/workflow/status/GrahamCampbell/Laravel-Bitbucket/Tests?label=Tests&style=flat-square" alt="Build Status"></img></a>
+<a href="https://github.com/GrahamCampbell/Laravel-Bitbucket/actions?query=workflow%3ATests"><img src="https://img.shields.io/github/actions/workflow/status/GrahamCampbell/Laravel-Bitbucket/tests.yml?label=Tests&style=flat-square" alt="Build Status"></img></a>
 <a href="https://github.styleci.io/repos/60779513"><img src="https://github.styleci.io/repos/60779513/shield" alt="StyleCI Status"></img></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-brightgreen?style=flat-square" alt="Software License"></img></a>
 <a href="https://packagist.org/packages/graham-campbell/bitbucket"><img src="https://img.shields.io/packagist/dt/graham-campbell/bitbucket?style=flat-square" alt="Packagist Downloads"></img></a>
@@ -16,24 +16,23 @@ Laravel Bitbucket was created by, and is maintained by [Graham Campbell](https:/
 
 ## Installation
 
-This version requires [PHP](https://www.php.net/) 7.4-8.1 and supports [Laravel](https://laravel.com/) 8-9.
+This version requires [PHP](https://www.php.net/) 7.4-8.2 and supports [Laravel](https://laravel.com/) 8-10.
 
-| Bitbucket | L5.1               | L5.2               | L5.3               | L5.4               | L5.5               | L5.6               | L5.7               | L5.8               | L6                 | L7                 | L8                 | L9                 |
-|-----------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
-| 1.1       | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                |
-| 2.1       | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                |
-| 3.0       | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                |
-| 4.3       | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                | :x:                |
-| 5.5       | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                |
-| 6.0       | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :x:                | :x:                |
-| 7.3       | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
-| 8.1       | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| 9.0       | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: |
+| Bitbucket | L5.5               | L5.6               | L5.7               | L5.8               | L6                 | L7                 | L8                 | L9                 | L10                |
+|-----------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
+| 3.0       | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                |
+| 4.3       | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                | :x:                | :x:                |
+| 5.5       | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                |
+| 6.0       | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :x:                | :x:                | :x:                |
+| 7.3       | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                | :x:                |
+| 8.1       | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :x:                |
+| 9.0       | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :x:                |
+| 10.0      | :x:                | :x:                | :x:                | :x:                | :x:                | :x:                | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
 To get the latest version, simply require the project using [Composer](https://getcomposer.org/):
 
 ```bash
-$ composer require "graham-campbell/bitbucket:^9.0"
+$ composer require "graham-campbell/bitbucket:^10.0"
 ```
 
 Once installed, if you are not using automatic package discovery, then you need to register the `GrahamCampbell\Bitbucket\BitbucketServiceProvider` service provider in your `config/app.php`.
@@ -129,11 +128,10 @@ If you prefer to use dependency injection over facades like me, then you can eas
 
 ```php
 use GrahamCampbell\Bitbucket\BitbucketManager;
-use Illuminate\Support\Facades\App; // you probably have this aliased already
 
 class Foo
 {
-    protected $bitbucket;
+    private BitbucketManager $bitbucket;
 
     public function __construct(BitbucketManager $bitbucket)
     {
@@ -146,10 +144,10 @@ class Foo
     }
 }
 
-App::make('Foo')->bar();
+app(Foo::class)->bar();
 ```
 
-For more information on how to use the `Bitbucket\Client` class we are calling behind the scenes here, check out the docs at https://github.com/BitbucketPHP/Client/tree/v4.1.0#usage, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
+For more information on how to use the `Bitbucket\Client` class we are calling behind the scenes here, check out the docs at https://github.com/BitbucketPHP/Client/tree/v5.0.0#usage, and the manager class at https://github.com/GrahamCampbell/Laravel-Manager#usage.
 
 ##### Further Information
 

@@ -26,9 +26,9 @@ use Mockery;
  */
 class PasswordAuthenticatorTest extends AbstractTestCase
 {
-    public function testMakeWithMethod()
+    public function testMakeWithMethod(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new PasswordAuthenticator();
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
@@ -40,12 +40,12 @@ class PasswordAuthenticatorTest extends AbstractTestCase
             'method'   => 'password',
         ]);
 
-        $this->assertInstanceOf(Client::class, $return);
+        self::assertInstanceOf(Client::class, $return);
     }
 
-    public function testMakeWithoutMethod()
+    public function testMakeWithoutMethod(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new PasswordAuthenticator();
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
@@ -56,12 +56,12 @@ class PasswordAuthenticatorTest extends AbstractTestCase
             'password' => 'your-password',
         ]);
 
-        $this->assertInstanceOf(Client::class, $return);
+        self::assertInstanceOf(Client::class, $return);
     }
 
-    public function testMakeWithoutUsername()
+    public function testMakeWithoutUsername(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new PasswordAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
@@ -73,9 +73,9 @@ class PasswordAuthenticatorTest extends AbstractTestCase
         ]);
     }
 
-    public function testMakeWithoutPassword()
+    public function testMakeWithoutPassword(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new PasswordAuthenticator();
 
         $client = Mockery::mock(Client::class);
 
@@ -87,22 +87,17 @@ class PasswordAuthenticatorTest extends AbstractTestCase
         ]);
     }
 
-    public function testMakeWithoutSettingClient()
+    public function testMakeWithoutSettingClient(): void
     {
-        $authenticator = $this->getAuthenticator();
+        $authenticator = new PasswordAuthenticator();
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The client instance was not given to the password authenticator.');
+        $this->expectExceptionMessage('The client instance was not given to the authenticator.');
 
         $authenticator->authenticate([
             'username' => 'your-username',
             'password' => 'your-password',
             'method'   => 'password',
         ]);
-    }
-
-    protected function getAuthenticator()
-    {
-        return new PasswordAuthenticator();
     }
 }

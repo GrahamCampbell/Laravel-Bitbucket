@@ -36,7 +36,7 @@ class BitbucketServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->setupConfig();
     }
@@ -46,7 +46,7 @@ class BitbucketServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function setupConfig()
+    private function setupConfig(): void
     {
         $source = realpath($raw = __DIR__.'/../config/bitbucket.php') ?: $raw;
 
@@ -64,7 +64,7 @@ class BitbucketServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->registerHttpClientFactory();
         $this->registerAuthFactory();
@@ -79,9 +79,9 @@ class BitbucketServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerHttpClientFactory()
+    private function registerHttpClientFactory(): void
     {
-        $this->app->singleton('bitbucket.httpclientfactory', function () {
+        $this->app->singleton('bitbucket.httpclientfactory', function (): BuilderFactory {
             $psrFactory = new GuzzlePsrFactory();
 
             return new BuilderFactory(
@@ -99,9 +99,9 @@ class BitbucketServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerAuthFactory()
+    private function registerAuthFactory(): void
     {
-        $this->app->singleton('bitbucket.authfactory', function () {
+        $this->app->singleton('bitbucket.authfactory', function (): AuthenticatorFactory {
             return new AuthenticatorFactory();
         });
 
@@ -113,9 +113,9 @@ class BitbucketServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerCacheFactory()
+    private function registerCacheFactory(): void
     {
-        $this->app->singleton('bitbucket.cachefactory', function (Container $app) {
+        $this->app->singleton('bitbucket.cachefactory', function (Container $app): ConnectionFactory {
             $cache = $app->bound('cache') ? $app->make('cache') : null;
 
             return new ConnectionFactory($cache);
@@ -129,9 +129,9 @@ class BitbucketServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerBitbucketFactory()
+    private function registerBitbucketFactory(): void
     {
-        $this->app->singleton('bitbucket.factory', function (Container $app) {
+        $this->app->singleton('bitbucket.factory', function (Container $app): BitbucketFactory {
             $builder = $app['bitbucket.httpclientfactory'];
             $auth = $app['bitbucket.authfactory'];
             $cache = $app['bitbucket.cachefactory'];
@@ -147,9 +147,9 @@ class BitbucketServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerManager()
+    private function registerManager(): void
     {
-        $this->app->singleton('bitbucket', function (Container $app) {
+        $this->app->singleton('bitbucket', function (Container $app): BitbucketManager {
             $config = $app['config'];
             $factory = $app['bitbucket.factory'];
 
@@ -164,9 +164,9 @@ class BitbucketServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function registerBindings()
+    private function registerBindings(): void
     {
-        $this->app->bind('bitbucket.connection', function (Container $app) {
+        $this->app->bind('bitbucket.connection', function (Container $app): Client {
             $manager = $app['bitbucket'];
 
             return $manager->connection();
@@ -180,7 +180,7 @@ class BitbucketServiceProvider extends ServiceProvider
      *
      * @return string[]
      */
-    public function provides()
+    public function provides(): array
     {
         return [
             'bitbucket.httpclientfactory',

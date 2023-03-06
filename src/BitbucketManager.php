@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace GrahamCampbell\Bitbucket;
 
+use Bitbucket\Client;
 use GrahamCampbell\Manager\AbstractManager;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Support\Arr;
@@ -69,7 +70,7 @@ class BitbucketManager extends AbstractManager
      *
      * @return \Bitbucket\Client
      */
-    protected function createConnection(array $config)
+    protected function createConnection(array $config): Client
     {
         return $this->factory->make($config);
     }
@@ -79,7 +80,7 @@ class BitbucketManager extends AbstractManager
      *
      * @return string
      */
-    protected function getConfigName()
+    protected function getConfigName(): string
     {
         return 'bitbucket';
     }
@@ -93,7 +94,7 @@ class BitbucketManager extends AbstractManager
      *
      * @return array
      */
-    public function getConnectionConfig(string $name = null)
+    public function getConnectionConfig(string $name = null): array
     {
         $config = parent::getConnectionConfig($name);
 
@@ -109,7 +110,7 @@ class BitbucketManager extends AbstractManager
      *
      * @return \GrahamCampbell\Bitbucket\BitbucketFactory
      */
-    public function getFactory()
+    public function getFactory(): BitbucketFactory
     {
         return $this->factory;
     }
