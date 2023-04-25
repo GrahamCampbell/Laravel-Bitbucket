@@ -41,7 +41,7 @@ final class JwtAuthenticator extends AbstractAuthenticator
             throw new InvalidArgumentException('The jwt authenticator requires a token.');
         }
 
-        $client->authenticate($config['token'], Client::AUTH_JWT);
+        $client->authenticate(Client::AUTH_JWT, $config['token']);
 
         return $client;
     }
