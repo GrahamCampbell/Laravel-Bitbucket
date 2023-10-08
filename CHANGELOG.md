@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V10.2 (08/10/2023)
+
+* Require bitbucket/client 4.5
+
+
 ## V10.1 (08/10/2023)
 
 * Require bitbucket/client 4.4
