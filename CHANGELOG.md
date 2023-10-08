@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V10.0.1 (XX/10/2023)
+
+* Fixed issue with the JWT authenticator
+
+
 ## V10.0 (07/03/2023)
 
 * Support Laravel 8-10 only

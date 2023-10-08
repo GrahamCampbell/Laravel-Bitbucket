@@ -33,7 +33,7 @@ class JwtAuthenticatorTest extends AbstractTestCase
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
-            ->with('your-token', 'jwt');
+            ->with('jwt', 'your-token');
 
         $return = $authenticator->with($client)->authenticate([
             'token'  => 'your-token',
@@ -49,7 +49,7 @@ class JwtAuthenticatorTest extends AbstractTestCase
 
         $client = Mockery::mock(Client::class);
         $client->shouldReceive('authenticate')->once()
-            ->with('your-token', 'jwt');
+            ->with('jwt', 'your-token');
 
         $return = $authenticator->with($client)->authenticate([
             'token'  => 'your-token',
