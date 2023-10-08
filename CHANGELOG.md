@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V10.0.1 (XX/10/2023)
+## V10.0.1 (08/10/2023)
 
 * Fixed issue with the JWT authenticator
 
