@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V10.3 (04/12/2023)
+
+* Added PHP 8.3 support
+* Require bitbucket/client 4.6
+
+
 ## V10.2 (08/10/2023)
 
 * Require bitbucket/client 4.5
