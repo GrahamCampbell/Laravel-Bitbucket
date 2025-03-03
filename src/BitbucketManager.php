@@ -42,11 +42,6 @@ use Illuminate\Support\Arr;
  */
 class BitbucketManager extends AbstractManager
 {
-    /**
-     * The factory instance.
-     *
-     * @var \GrahamCampbell\Bitbucket\BitbucketFactory
-     */
     protected readonly BitbucketFactory $factory;
 
     /**

@@ -28,18 +28,7 @@ use InvalidArgumentException;
  */
 final class IlluminateConnector implements ConnectorInterface
 {
-    /**
-     * The minimum cache lifetime of 12 hours.
-     *
-     * @var int
-     */
     private const MIN_CACHE_LIFETIME = 43200;
-
-    /**
-     * The maximum cache lifetime of 48 hours.
-     *
-     * @var int
-     */
     private const MAX_CACHE_LIFETIME = 172800;
 
     /**
@@ -50,7 +39,7 @@ final class IlluminateConnector implements ConnectorInterface
      * @return void
      */
     public function __construct(
-        private readonly Factory $cache = null,
+        private readonly ?Factory $cache = null,
     ) {
     }
 
