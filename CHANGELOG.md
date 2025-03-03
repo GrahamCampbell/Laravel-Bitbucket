@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V10.5 (03/03/2025)
+
+* Added graham-campbell/bounded-cache v3 support
+
+
 ## V10.4 (17/03/2024)
 
 * Added Laravel 11 support
