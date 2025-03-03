@@ -89,7 +89,7 @@ class BitbucketManager extends AbstractManager
      *
      * @return array
      */
-    public function getConnectionConfig(string $name = null): array
+    public function getConnectionConfig(?string $name = null): array
     {
         $config = parent::getConnectionConfig($name);
 
