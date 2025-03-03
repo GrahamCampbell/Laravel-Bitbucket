@@ -43,22 +43,15 @@ final class IlluminateConnector implements ConnectorInterface
     private const MAX_CACHE_LIFETIME = 172800;
 
     /**
-     * The cache factory instance.
-     *
-     * @var \Illuminate\Contracts\Cache\Factory|null
-     */
-    private ?Factory $cache;
-
-    /**
      * Create a new illuminate connector instance.
      *
      * @param \Illuminate\Contracts\Cache\Factory|null $cache
      *
      * @return void
      */
-    public function __construct(Factory $cache = null)
-    {
-        $this->cache = $cache;
+    public function __construct(
+        private readonly Factory $cache = null,
+    ) {
     }
 
     /**

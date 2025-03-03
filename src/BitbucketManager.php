@@ -47,7 +47,7 @@ class BitbucketManager extends AbstractManager
      *
      * @var \GrahamCampbell\Bitbucket\BitbucketFactory
      */
-    protected $factory;
+    protected readonly BitbucketFactory $factory;
 
     /**
      * Create a new bitbucket manager instance.

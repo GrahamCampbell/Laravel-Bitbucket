@@ -2,6 +2,13 @@ CHANGE LOG
 ==========
 
 
+## V11.0 (XX/03/2025)
+
+* Support only PHP 8.1-8.4
+* Support only Laravel 10-12
+* Require bitbucket/client 5.0
+
+
 ## V10.5 (03/03/2025)
 
 * Added graham-campbell/bounded-cache v3 support

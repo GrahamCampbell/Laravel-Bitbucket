@@ -32,27 +32,6 @@ use Symfony\Component\Cache\Adapter\Psr16Adapter;
 class BitbucketFactory
 {
     /**
-     * The http client builder factory instance.
-     *
-     * @var \GrahamCampbell\Bitbucket\HttpClient\BuilderFactory
-     */
-    private BuilderFactory $builder;
-
-    /**
-     * The authenticator factory instance.
-     *
-     * @var \GrahamCampbell\Bitbucket\Auth\AuthenticatorFactory
-     */
-    private AuthenticatorFactory $auth;
-
-    /**
-     * The cache factory instance.
-     *
-     * @var \GrahamCampbell\Bitbucket\Cache\ConnectionFactory
-     */
-    private ConnectionFactory $cache;
-
-    /**
      * Create a new bitbucket factory instance.
      *
      * @param \GrahamCampbell\Bitbucket\HttpClient\BuilderFactory $builder
@@ -61,11 +40,11 @@ class BitbucketFactory
      *
      * @return void
      */
-    public function __construct(BuilderFactory $builder, AuthenticatorFactory $auth, ConnectionFactory $cache)
-    {
-        $this->builder = $builder;
-        $this->auth = $auth;
-        $this->cache = $cache;
+    public function __construct(
+        private readonly BuilderFactory $builder,
+        private readonly AuthenticatorFactory $auth,
+        private readonly ConnectionFactory $cache,
+    ) {
     }
 
     /**
