@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V11.1.1 (UPCOMING)
+
+* Fixed the private key authenticator passing its arguments in the wrong order
+
+
 ## V11.1 (06/05/2026)
 
 * Add PHP 8.5 support
