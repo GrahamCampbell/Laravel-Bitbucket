@@ -5,6 +5,7 @@ CHANGE LOG
 ## V11.1.1 (UPCOMING)
 
 * Fixed the private key authenticator passing its arguments in the wrong order
+* Require bitbucket/client 5.1.1
 
 
 ## V11.1 (06/05/2026)
