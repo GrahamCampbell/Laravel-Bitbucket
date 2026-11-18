@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V11.1.1 (UPCOMING)
+## V11.1.1 (18/11/2026)
 
 * Fixed the private key authenticator passing its arguments in the wrong order
 
