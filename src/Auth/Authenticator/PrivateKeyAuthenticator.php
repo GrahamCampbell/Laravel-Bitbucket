@@ -53,7 +53,7 @@ final class PrivateKeyAuthenticator extends AbstractAuthenticator
             throw new InvalidArgumentException('The private key authenticator requires the application id to be configured.');
         }
 
-        $client->authenticate(self::getToken($config)->toString(), Client::AUTH_JWT);
+        $client->authenticate(Client::AUTH_JWT, self::getToken($config)->toString());
 
         return $client;
     }

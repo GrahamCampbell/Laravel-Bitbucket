@@ -26,7 +26,8 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
         $authenticator = new PrivateKeyAuthenticator();
 
         $client = Mockery::mock(Client::class);
-        $client->shouldReceive('authenticate')->once();
+        $client->shouldReceive('authenticate')->once()
+            ->with('jwt', Mockery::type('string'));
 
         $return = $authenticator->with($client)->authenticate([
             'appId'   => 1,
@@ -56,7 +57,8 @@ class PrivateKeyAuthenticatorTest extends AbstractTestCase
         $authenticator = new PrivateKeyAuthenticator();
 
         $client = Mockery::mock(Client::class);
-        $client->shouldReceive('authenticate')->once();
+        $client->shouldReceive('authenticate')->once()
+            ->with('jwt', Mockery::type('string'));
 
         $key = <<<'KEY'
             -----BEGIN RSA PRIVATE KEY-----
